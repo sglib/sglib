@@ -3,7 +3,7 @@
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import flash.media.Video;
-	import sglib.core.infs.ILoaderVideo;
+	import sglib.core.infs.load.ILoaderVideo;
 	import sglib.service.load.LoaderVideo;
 	/**
 	 * @version 0.1.0

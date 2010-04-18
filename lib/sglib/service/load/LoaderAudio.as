@@ -7,6 +7,8 @@
 	import sglib.core.data.Numeric;
 	import flash.media.Sound;
 	import sglib.core.infs.load.ILoaderAudio;
+	import sglib.core.infs.play.IPlayer;
+	import sglib.core.infs.play.IPlayerAudio;
 	import sglib.service.load.LoaderBase;
 	
 	/**

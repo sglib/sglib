@@ -1,7 +1,7 @@
 ﻿package loader
 {
 	import flash.display.MovieClip;
-	import sglib.core.infs.ILoaderAudio;
+	import sglib.core.infs.load.ILoaderAudio;
 	import sglib.service.load.LoaderAudio;
 	/**
 	 * @version 0.1.0

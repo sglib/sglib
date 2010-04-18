@@ -1,10 +1,10 @@
 ﻿package sglib.controller.play 
 {
-	import sglib.core.infs.ILoader;
-	import sglib.core.infs.ILoaderInternal;
-	import sglib.core.infs.IPlayerVideo;
+	import sglib.core.infs.load.ILoader;
+	import sglib.core.infs.load.ILoaderInternal;
+	import sglib.core.infs.load.ILoaderVideo;
+	import sglib.core.infs.play.IPlayerVideo;
 	import sglib.core.utils.Frame;
-	import sglib.core.infs.ILoaderVideo;
 	import sglib.core.utils.Instantiate;
 	/**
 	 * @version 0.1.0

@@ -13,7 +13,9 @@
 	{
 		function set view(pview: DisplayObject):void;
 		function get view(): DisplayObject;
-		function set size(pw: int, ph: int):void;
+		function setSize(pw: int, ph: int):void;
+		function get width(): int;
+		function get height(): int;
 	}
 	
 }

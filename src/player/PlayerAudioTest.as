@@ -3,7 +3,7 @@
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import sglib.controller.play.PlayerAudio;
-	import sglib.core.infs.IPlayerAudio;
+	import sglib.core.infs.play.IPlayerAudio;
 	import sglib.service.load.LoaderAudio;
 	
 	/**

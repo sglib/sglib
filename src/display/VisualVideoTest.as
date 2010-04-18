@@ -5,7 +5,7 @@
 	import sglib.controller.play.PlayerVideo;
 	import sglib.core.constant.Classes;
 	import sglib.core.data.State;
-	import sglib.core.infs.IVisualVideo;
+	import sglib.core.infs.visual.IVisualVideo;
 	import sglib.core.utils.Frame;
 	import sglib.core.utils.Instantiate;
 	import sglib.display.base.VisualVideo;

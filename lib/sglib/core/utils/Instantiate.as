@@ -13,7 +13,7 @@
 		protected static var _visualClasses	: VisualClasses;
 		protected static var _loaderClasses	: LoaderClasses;
 		protected static var _playerClasses	: PlayerClasses;
-		protected static var _layoutClasses	: PlayerClasses;
+		protected static var _layoutClasses	: LayoutClasses;
 		
 		public static function fromName(pname: String): Object {
 			var cls : Class = getDefinitionByName(pname) as Class;
@@ -69,7 +69,7 @@ class VisualClasses {
 		return Instantiate.fromName('sglib.display.base.MaskedView') as IMaskedView;
 	}
 	public function get groupView(): IGroupView {
-		return Instantiate.fromName('sglib.display.base.GroupView') as IMaskedView;
+		return Instantiate.fromName('sglib.display.base.GroupView') as IGroupView;
 	}
 }
 

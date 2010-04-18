@@ -4,10 +4,11 @@
 	import flash.media.SoundChannel;
 	import sglib.core.constant.LoadStatus;
 	import sglib.core.constant.PlayStatus;
-	import sglib.core.infs.ILoader;
-	import sglib.core.infs.ILoaderAudio;
-	import sglib.core.infs.ILoaderInternal;
-	import sglib.core.infs.IPlayerAudio;
+	import sglib.core.infs.load.ILoader;
+	import sglib.core.infs.load.ILoaderAudio;
+	import sglib.core.infs.load.ILoaderInternal;
+	import sglib.core.infs.play.IPlayerAudio;
+	
 	import sglib.core.utils.Frame;
 	import sglib.core.utils.Instantiate;
 	/**

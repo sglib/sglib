@@ -7,9 +7,9 @@
 	import sglib.core.data.Info;
 	import sglib.core.data.State;
 	import sglib.core.data.Numeric;
-	import sglib.core.infs.ILoader;
-	import sglib.core.infs.IPlayer;
-	import sglib.core.infs.IPlayerInternal;
+	import sglib.core.infs.load.ILoader;
+	import sglib.core.infs.play.IPlayer;
+	import sglib.core.infs.play.IPlayerInternal;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash (thienhaflash@gmail.com)

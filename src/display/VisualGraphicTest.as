@@ -2,7 +2,7 @@
 {
 	import flash.display.Sprite;
 	import sglib.core.constant.Classes;
-	import sglib.core.infs.IVisualGraphic;
+	import sglib.core.infs.visual.IVisualGraphic;
 	import sglib.core.utils.Instantiate;
 	import sglib.display.base.VisualGraphic;
 	import sglib.service.load.LoaderGraphic;

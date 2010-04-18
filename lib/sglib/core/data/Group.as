@@ -13,7 +13,7 @@
 		protected var _active	: int;
 		protected var _total	: int;
 		
-		public function Group(ptotal: int = 1, pactive: int = -1, pvalidator : Function) 
+		public function Group(ptotal: int = 1, pactive: int = -1, pvalidator : Function = null) 
 		{
 			super(pvalidator);
 			_last = -1;
@@ -30,7 +30,7 @@
 			if ((pvalue != _active) && ((_validator==null) || _validator(pvalue))) {
 				_last = _active;
 				_active = pvalue;
-				_callback.dispatch();
+				dispatch();
 			}
 		}
 		

@@ -4,7 +4,6 @@
 	import flash.events.MouseEvent;
 	import flash.media.Video;
 	import sglib.controller.play.PlayerVideo;
-	import sglib.core.infs.ILoader;
 	import sglib.service.load.LoaderVideo;
 	/**
 	 * @version 0.1.0

@@ -10,7 +10,6 @@
 	 */
 	public interface IComponent 
 	{
-		function setSkin(pskin: ISkin): void;
 	}
 	
 }

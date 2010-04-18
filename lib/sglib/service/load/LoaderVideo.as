@@ -9,6 +9,7 @@
 	import sglib.core.data.Numeric;
 	import flash.net.NetStream;
 	import sglib.core.infs.load.ILoaderVideo;
+	import sglib.core.infs.play.IPlayer;
 	import sglib.core.infs.play.IPlayerVideo;
 	import sglib.core.utils.Frame;
 	/**
