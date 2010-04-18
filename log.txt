@@ -1,0 +1,65 @@
+﻿This log will tell you what's going on about mid-way changing design
+
+Using .status .info to replace specific event dispatcher that is more centralize / easy to maintain. Instead of creating several handlers, one for each
+event, using .status.addLsn will call only 1 handler, user then can access .status.value to get the state and make a switch case handler, if user want
+to handle other event (like firstly only handle COMPLETE, then when finalize we can add a PROGRESS to finish things up)
+
+
+1.	Got some prolem with SoundMixer : It's static and being shared over all FP instances - this make SoundMixer useless - Just skip for now - maybe remove the Visualizer from display package
+
+2.	Should we implements Graphic / Audio / Video the composite way or the list way ?
+	.:	Composite way :
+			Video.player.play();
+						.pause();
+						.stop();
+						.status
+				 .loader.url
+						.start();
+						.stop();
+						.status
+		
+	.:	List way :
+			Video	.play()
+					.pause()
+					.stop()
+					.playStatus
+					.url
+					.loadstatus
+					.startLoad();
+					.stopLoad();
+
+3.	We can use Loader.loadBytes to cast a byteArray into a DisplayObject.
+	This will remove all the security sandbox of the loaded SWF (it can access the loader and do anything it wants)
+	We can encryp/inject our SWF with some bytes and put it onto the server instead of the .swf itself
+	We then load the swf's byteArray using URLStream, remove the bytes we injected + decrypt before, pass the byteArray into Loader.loadBytes
+	
+4.	Có thể dùng protected getter thay vì khai báo một biến Abstract để có được strong typing trong các classes con mà vẫn giữ được tính simple
+	(chỉ dùng 1 biến để lưu giữ thay vì 2 biến)
+	
+	Ví dụ, trong Abstract Player có sử dụng 1 biến kiểu Abstract Loader, biến này có thể là audioLoader / videoLoader / graphicLoader tùy theo
+		implement của các classes con, khi đó thay vì khai báo một biến loader : AbstractLoader ta có thể dùng 1 getter trả về abstractLoader
+		Bằng cách này trong mỗi class con ta khai báo một biến loader có kiểu phù hợp (Audio/video/graphic) và override getter của AbstractPlayer
+		
+5.	Check policy file = true sẽ làm quá trình load file chậm lại một chút (hợp lý, vì phải down policy file về và kiểm tra)
+
+6.	NetStream.bufferLength có thể report không đúng thời lượng file đang nằm trong bộ nhớ buffer (và đại đa số trường hợp sẽ không đúng), một số
+	trường hợp NetStream skip Buffer.status.EMPTY / FULL.
+	Khi NetStream.bufferTime được set > duration thực của video, thì stream sẽ pause một khoảng thời gian = với value của NetStream.bufferTime
+	
+7.	Sound.length sẽ tăng liên tục từ 0 (bắt đầu load) --> duration của file âm thanh (khi load xong), nói cách khác, sound.length cho biết thời
+	lượng âm thanh đã load chứ o phải duration thực tế của audio.
+	
+8.  Player always need a Loader to work (dependent) but Loader is not required a Player to work. VisualGraphic will need Loader + an optional Player,
+	VisualVideo will need both loader + player to work
+	
+9.	We can use interface to describle any Class, if a class implements multiple interfaces like IA, IB, IC, IClass with IClass is the main Interface
+	for Class, we can then add .get asIA(): IA, .get asIB(): IB, .get asIC(): IC so we can still access all class functions ad use IClass as a
+	completely replacement for Class
+	
+10.	There can be cases when we need to hide some functionality from user's view. We can then let Class implement another IClassInternal so when
+	user use IClass instead of Class (as recommended usage), user can't see the functions for IClassInternal but we then can cast Class instance 
+	from IClass to IClassInternal and use the internal functionalities
+	
+
+	
+Quick Ones : Uploader / Webcam support / Peer2Peer ?
