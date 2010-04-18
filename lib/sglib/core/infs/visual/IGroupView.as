@@ -1,5 +1,6 @@
 ﻿package sglib.core.infs.visual
 {
+	import sglib.core.data.Group;
 	import sglib.core.infs.layout.ILayout;
 	
 	/**
@@ -14,6 +15,7 @@
 		function setContent(...pchildren): IGroupView;
 		function generateContent(nChild : int, fInit: Function): IGroupView;
 		function setLayout(playout: ILayout): IGroupView;
+		function get group(): Group;
 	}
 	
 }

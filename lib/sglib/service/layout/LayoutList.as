@@ -16,7 +16,7 @@
 		protected var oy		: int;
 		protected var isHorz	: int;
 		
-		override public function refresh(pitems:Array):void 
+		public function refresh(pitems:Array):void 
 		{
 			var l	: int = list.length;
 			var o	: DisplayObject;
@@ -35,12 +35,17 @@
 					c += o.height + spacing;
 				}
 			}
+			
+			_width = (isHorz) ? c + ox : 0;
+			_height = (isHorz) ? 0 : c + oy;
 		}
 		
 		public function config(pgap:int = 0, phorz:Boolean = true, px:int = 0, py:int = 0):ILayoutList
 		{
 			gaps = pgap; isHorz = phorz; ox = px; oy = py;
 		}
+		
+		
 	}
 
 }

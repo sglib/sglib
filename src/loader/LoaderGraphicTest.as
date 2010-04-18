@@ -3,7 +3,7 @@
 	import flash.display.MovieClip;
 	import flash.system.LoaderContext;
 	import sglib.core.constant.LoadStatus;
-	import sglib.core.infs.ILoaderGraphic;
+	import sglib.core.infs.load.ILoaderGraphic;
 	import sglib.service.load.LoaderGraphic;
 	/**
 	 * @version 0.1.0

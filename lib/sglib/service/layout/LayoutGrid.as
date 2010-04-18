@@ -34,7 +34,7 @@
 			oy	= py;
 		}
 		
-		override public function refresh(pitems:Array):void 
+		public function refresh(pitems:Array):void 
 		{
 			var l	: int = pitems.length;
 			var o	: DisplayObject;
@@ -51,6 +51,8 @@
 				}	
 			}
 			
+			_width = (isHorz) ? int(l / n) * gridW +2 * ox : (l % n) * gridH + x * oy;
+			_height = (!isHorz) ? int(l / n) * gridW +2 * ox : (l % n) * gridH + 2 * oy;			
 		}
 		
 	}
