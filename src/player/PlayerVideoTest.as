@@ -4,6 +4,8 @@
 	import flash.events.MouseEvent;
 	import flash.media.Video;
 	import sglib.controller.play.PlayerVideo;
+	import sglib.core.gen.newPlayerVideo;
+	import sglib.core.infs.play.IPlayerVideo;
 	import sglib.service.load.LoaderVideo;
 	/**
 	 * @version 0.1.0
@@ -15,14 +17,15 @@
 	 */
 	public class PlayerVideoTest extends MovieClip
 	{
-		protected var pv : PlayerVideo;
+		protected var pv : IPlayerVideo;
 		
 		public function PlayerVideoTest() 
 		{	
 			//import
 			var a : LoaderVideo;
+			var b : PlayerVideo;
 			
-			pv = new PlayerVideo();
+			pv = newPlayerVideo();
 			pv.onPlayStatus(onStatus);
 			pv.play('1.flv');
 			

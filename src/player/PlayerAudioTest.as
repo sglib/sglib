@@ -1,8 +1,10 @@
 ﻿package player 
 {
+	import flash.display.Loader;
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import sglib.controller.play.PlayerAudio;
+	import sglib.core.gen.newPlayerAudio;
 	import sglib.core.infs.play.IPlayerAudio;
 	import sglib.service.load.LoaderAudio;
 	
@@ -20,9 +22,10 @@
 		public function PlayerAudioTest() 
 		{
 			//import :: 
-			var a : LoaderAudio;
+			var a : PlayerAudio;
+			var b : LoaderAudio;
 			
-			pl = new PlayerAudio();
+			pl = newPlayerAudio();
 			pl.play('1.mp3');
 			pl.playProgress.addLsn(onPlayProgress);
 			stage.addEventListener(MouseEvent.CLICK, onClick);

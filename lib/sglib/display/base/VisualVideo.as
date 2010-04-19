@@ -2,10 +2,10 @@
 {
 	import flash.media.Video;
 	import sglib.core.constant.VisualStatus;
+	import sglib.core.gen.newPlayerVideo;
 	import sglib.core.infs.load.ILoaderVideo;
 	import sglib.core.infs.play.IPlayerVideo;
 	import sglib.core.infs.visual.IVisualVideo;
-	import sglib.core.utils.Instantiate;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash
@@ -20,7 +20,7 @@
 		protected var _video	: Video;
 		
 		public function VisualVideo(pplayer : IPlayerVideo = null) {
-			_player = pplayer ? pplayer : Instantiate.Player.video;//instantiate('sglib.controller.play.PlayerVideo') as IPlayerVideo;
+			_player = pplayer ? pplayer : newPlayerVideo();//instantiate('sglib.controller.play.PlayerVideo') as IPlayerVideo;
 			_loader = _player.loader;
 			
 			_video = new Video();

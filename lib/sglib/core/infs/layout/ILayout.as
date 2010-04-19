@@ -10,7 +10,7 @@
 	 */
 	public interface ILayout 
 	{
-		function refresh(pitems: Array): Object;
+		function refresh(pitems: Array): void;
 		function get width():int;
 		function get height(): int;
 	}

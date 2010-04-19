@@ -6,10 +6,11 @@
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import sglib.core.constant.LoadStatus;
+	import sglib.core.gen.newMaskedView;
+	import sglib.core.gen.newVisualGraphic;
 	import sglib.core.infs.play.IPlayerGraphic;
 	import sglib.core.infs.visual.IMaskedView;
 	import sglib.core.infs.visual.IVisualGraphic;
-	import sglib.core.utils.Instantiate;
 	import sglib.core.utils.val2Pct;
 	import sglib.display.base.MaskedView;
 	import sglib.display.base.VisualGraphic;
@@ -34,8 +35,8 @@
 			var c : LoaderGraphic;
 			var d : IPlayerGraphic;
 			
-			_mv = Instantiate.Visual.maskedView;
-			_gp = Instantiate.Visual.graphic;
+			_mv = newMaskedView();
+			_gp = newVisualGraphic();
 			_mv.setVisualContent(_gp);
 			_gp.url = 'big.png';
 			_gp.url = '2.jpg';

@@ -35,8 +35,14 @@
 		public function setContent(...pchildren):IGroupView
 		{
 			_items = pchildren;
+			
+			//trace(_items, _items.length);
 			_group = new Group(_items.length, -1);
 			_layout.refresh(_items);
+			
+			for (var i: int = 0; i < _group.total; i++) {
+				_view.addChild(_items[i]);
+			}
 			
 			_width = _layout.width;
 			_height = _layout.height;
