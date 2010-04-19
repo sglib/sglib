@@ -32,6 +32,7 @@
 			isHorz = phorz;
 			ox	= px;
 			oy	= py;
+			return this;
 		}
 		
 		public function refresh(pitems:Array):void 
@@ -51,7 +52,7 @@
 				}	
 			}
 			
-			_width = (isHorz) ? int(l / n) * gridW +2 * ox : (l % n) * gridH + x * oy;
+			_width = (isHorz) ? int(l / n) * gridW +2 * ox : (l % n) * gridH + 2 * oy;
 			_height = (!isHorz) ? int(l / n) * gridW +2 * ox : (l % n) * gridH + 2 * oy;			
 		}
 		

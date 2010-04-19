@@ -3,6 +3,7 @@
 	import flash.display.MovieClip;
 	import flash.system.LoaderContext;
 	import sglib.core.constant.LoadStatus;
+	import sglib.core.gen.newLoaderGraphic;
 	import sglib.core.infs.load.ILoaderGraphic;
 	import sglib.service.load.LoaderGraphic;
 	/**
@@ -19,7 +20,10 @@
 		
 		public function LoaderGraphicTest() 
 		{
-			ld = new LoaderGraphic();
+			//import
+			var a : LoaderGraphic;
+			
+			ld = newLoaderGraphic();
 			ld	.context(true)
 				.onLoadProgress(onProgress)
 				.onLoadStatus(onStatus)

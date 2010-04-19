@@ -1,9 +1,8 @@
 ﻿package display 
 {
 	import flash.display.Sprite;
-	import sglib.core.constant.Classes;
+	import sglib.core.gen.newVisualGraphic;
 	import sglib.core.infs.visual.IVisualGraphic;
-	import sglib.core.utils.Instantiate;
 	import sglib.display.base.VisualGraphic;
 	import sglib.service.load.LoaderGraphic;
 	/**
@@ -23,7 +22,7 @@
 			var a: LoaderGraphic;
 			var b: VisualGraphic;
 			
-			vg = Instantiate.Visual.graphic;
+			vg = newVisualGraphic();
 			vg.url = 'logo.png';
 			vg.asLoader.context(true).startLoad('logo.png');
 			addChild(vg.view);

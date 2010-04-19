@@ -14,25 +14,25 @@
 		protected var gaps		: int;
 		protected var ox		: int;
 		protected var oy		: int;
-		protected var isHorz	: int;
+		protected var isHorz	: Boolean;
 		
 		public function refresh(pitems:Array):void 
 		{
-			var l	: int = list.length;
+			var l	: int = pitems.length;
 			var o	: DisplayObject;
 			var c	: int = (isHorz) ? ox : oy;
 			
 			for (var i: int = 0; i < l; i++) {
-				o = list[i];
+				o = pitems[i];
 				
 				if (isHorz) {
 					o.x = c;
 					if (!isNaN(oy)) o.y = oy; 
-					c += o.width + spacing;
+					c += o.width + gaps;
 				} else {
 					o.y = c;
 					if (!isNaN(ox)) o.x = ox;
-					c += o.height + spacing;
+					c += o.height + gaps;
 				}
 			}
 			
@@ -43,6 +43,7 @@
 		public function config(pgap:int = 0, phorz:Boolean = true, px:int = 0, py:int = 0):ILayoutList
 		{
 			gaps = pgap; isHorz = phorz; ox = px; oy = py;
+			return this;
 		}
 		
 		

@@ -13,7 +13,6 @@
 	import sglib.core.infs.visual.IVisualVideo;
 	import sglib.core.utils.drwRect;
 	import sglib.core.utils.Frame;
-	import sglib.core.utils.Instantiate;
 	import sglib.display.base.VisualVideo;
 	import sglib.service.load.LoaderAudio;
 	import sglib.service.load.LoaderVideo;

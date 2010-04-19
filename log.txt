@@ -60,6 +60,11 @@ to handle other event (like firstly only handle COMPLETE, then when finalize we 
 	user use IClass instead of Class (as recommended usage), user can't see the functions for IClassInternal but we then can cast Class instance 
 	from IClass to IClassInternal and use the internal functionalities
 	
+11. instantiate(Classes.ClassName) will shorter and need less import than Instantiate. but we need to cast the type. It's simpler using the Instantiate. methods
+	for example : Instead of instantiate(Classes.VisualVideo) as IVisualVideo
+						it's Instantiate.Visual.Video;
+	Thinking of some better way of Instantiate like newVisualVideo() : IVisualVideo;
 
+	
 	
 Quick Ones : Uploader / Webcam support / Peer2Peer ?

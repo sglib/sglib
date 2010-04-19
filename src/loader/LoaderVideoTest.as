@@ -3,6 +3,7 @@
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import flash.media.Video;
+	import sglib.core.gen.newLoaderVideo;
 	import sglib.core.infs.load.ILoaderVideo;
 	import sglib.service.load.LoaderVideo;
 	/**
@@ -20,7 +21,8 @@
 		
 		public function LoaderVideoTest() 
 		{
-			ld = new LoaderVideo();
+			var a  : LoaderVideo;
+			ld = newLoaderVideo();
 			ld	.onLoadProgress(_onProgress)
 				.onLoadStatus(_onStatus)
 				.startLoad('http://www.albumcuatui.net/thienhaflash/ActionScript 3 Log.flv?' + Math.random());

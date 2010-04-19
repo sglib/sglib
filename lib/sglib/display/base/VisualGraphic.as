@@ -4,10 +4,10 @@
 	import flash.display.LoaderInfo;
 	import sglib.core.constant.LoadStatus;
 	import sglib.core.constant.VisualStatus;
+	import sglib.core.gen.newLoaderGraphic;
 	import sglib.core.infs.load.ILoaderGraphic;
 	import sglib.core.infs.play.IPlayerGraphic;
 	import sglib.core.infs.visual.IVisualGraphic;
-	import sglib.core.utils.Instantiate;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash
@@ -22,7 +22,7 @@
 		
 		public function VisualGraphic(ploader : ILoaderGraphic = null) 
 		{
-			_loader = ploader ? ploader : Instantiate.Loader.graphic;
+			_loader = ploader ? ploader : newLoaderGraphic();
 			//_loader.reuseLoader = false; /* so we can access _loaderInfo later */
 			_loader.onLoadStatus(_onLoadStatus);
 		}

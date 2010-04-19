@@ -1,11 +1,11 @@
 ﻿package sglib.controller.play 
 {
+	import sglib.core.gen.newLoaderVideo;
 	import sglib.core.infs.load.ILoader;
 	import sglib.core.infs.load.ILoaderInternal;
 	import sglib.core.infs.load.ILoaderVideo;
 	import sglib.core.infs.play.IPlayerVideo;
 	import sglib.core.utils.Frame;
-	import sglib.core.utils.Instantiate;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash (thienhaflash@gmail.com)
@@ -21,7 +21,7 @@
 		
 		public function PlayerVideo(ploader: ILoaderVideo = null) 
 		{
-			_loader = ploader ? ploader : Instantiate.Loader.video;//instantiate('sglib.service.load.LoaderVideo') as ILoaderVideo
+			_loader = ploader ? ploader : newLoaderVideo();//instantiate('sglib.service.load.LoaderVideo') as ILoaderVideo
 			(_loader as ILoaderInternal).iPlayer = this;
 			
 			_position = 0;

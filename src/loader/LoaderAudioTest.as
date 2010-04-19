@@ -1,6 +1,7 @@
 ﻿package loader
 {
 	import flash.display.MovieClip;
+	import sglib.core.gen.newLoaderAudio;
 	import sglib.core.infs.load.ILoaderAudio;
 	import sglib.service.load.LoaderAudio;
 	/**
@@ -17,7 +18,10 @@
 		
 		public function LoaderAudioTest() 
 		{
-			ld = new LoaderAudio();
+			//import
+			var a : LoaderAudio;
+			
+			ld = newLoaderAudio();
 			ld.onLoadStatus(onStatus).onLoadProgress(onProgress).startLoad('1.mp3');
 		}
 		

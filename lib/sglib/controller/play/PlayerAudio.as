@@ -4,13 +4,13 @@
 	import flash.media.SoundChannel;
 	import sglib.core.constant.LoadStatus;
 	import sglib.core.constant.PlayStatus;
+	import sglib.core.gen.newLoaderAudio;
 	import sglib.core.infs.load.ILoader;
 	import sglib.core.infs.load.ILoaderAudio;
 	import sglib.core.infs.load.ILoaderInternal;
 	import sglib.core.infs.play.IPlayerAudio;
 	
 	import sglib.core.utils.Frame;
-	import sglib.core.utils.Instantiate;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash (thienhaflash@gmail.com)
@@ -26,7 +26,7 @@
 		
 		public function PlayerAudio(ploader : ILoaderAudio = null) 
 		{
-			_loader = ploader ? ploader : Instantiate.Loader.audio;
+			_loader = ploader ? ploader : newLoaderAudio();
 			(_loader as ILoaderInternal).iPlayer = this;
 			
 			if (_loader.loadStatus.value == LoadStatus.COMPLETED) {

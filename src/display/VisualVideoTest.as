@@ -3,11 +3,10 @@
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	import sglib.controller.play.PlayerVideo;
-	import sglib.core.constant.Classes;
 	import sglib.core.data.State;
+	import sglib.core.gen.newVisualVideo;
 	import sglib.core.infs.visual.IVisualVideo;
 	import sglib.core.utils.Frame;
-	import sglib.core.utils.Instantiate;
 	import sglib.display.base.VisualVideo;
 	import sglib.service.load.LoaderVideo;
 	/**
@@ -30,7 +29,7 @@
 			var c : VisualVideo;
 			
 			//vd = instantiate('sglib.display.base.VisualVideo') as IVisualVideo;
-			vd = Instantiate.Visual.video;
+			vd = newVisualVideo();
 			vd.asPlayer.playStatus.addLsn(onChangeStatus, [vd.asPlayer.playStatus]);
 			addChild(vd.view);
 			vd.url = '1.flv';
