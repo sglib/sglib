@@ -10,13 +10,10 @@
 	 * 
 	 * @update 14 April 2010 (0.1.0)
 	 */
-	public interface IVisualGraphic extends IVisualObject
+	public interface IVisualGraphic extends IVisualEx
 	{
 		function get asLoader(): ILoaderGraphic;
 		function get asPlayer(): IPlayerGraphic;
-		
-		function get url(): String;
-		function set url(purl: String): void;
 	}
 	
 }

@@ -4,7 +4,9 @@
 	import flash.display.LoaderInfo;
 	import sglib.core.constant.LoadStatus;
 	import sglib.core.constant.VisualStatus;
+	import sglib.core.data.Numeric;
 	import sglib.core.gen.newLoaderGraphic;
+	import sglib.core.infs.load.ILoader;
 	import sglib.core.infs.load.ILoaderGraphic;
 	import sglib.core.infs.play.IPlayerGraphic;
 	import sglib.core.infs.visual.IVisualGraphic;
@@ -56,6 +58,8 @@
 					break; /* show loading ? */
 			}
 		}
+		
+		public function get loadProgress():Numeric { return _loader.loadProgress; }
 		
 		public function get asLoader():ILoaderGraphic {	return _loader }
 		

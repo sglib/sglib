@@ -2,7 +2,9 @@
 {
 	import flash.media.Video;
 	import sglib.core.constant.VisualStatus;
+	import sglib.core.data.Numeric;
 	import sglib.core.gen.newPlayerVideo;
+	import sglib.core.infs.load.ILoader;
 	import sglib.core.infs.load.ILoaderVideo;
 	import sglib.core.infs.play.IPlayerVideo;
 	import sglib.core.infs.visual.IVisualVideo;
@@ -35,6 +37,8 @@
 		{
 			_regAlign(_video);
 		}
+		
+		public function get loadProgress():Numeric { return _loader.loadProgress; }
 		
 		public function get asLoader():ILoaderVideo {  return _loader }
 		
