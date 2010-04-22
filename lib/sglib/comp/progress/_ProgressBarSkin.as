@@ -10,7 +10,7 @@
 	 * @author Khac-Thanh
  	 * khacthanh.1985@gmail.com
 	 */
-	public class ProgressBarSkin implements IProgressSkin
+	public class ProgressBarSkindsfasdf implements IProgressSkin
 	{
 		protected var _view		: Sprite;
 		protected var _track	: DisplayObject;

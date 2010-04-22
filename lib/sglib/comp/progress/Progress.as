@@ -4,60 +4,29 @@
 	import sglib.core.infs.comp.IProgress;
 	import sglib.core.infs.comp.IProgressSkin;
 	import sglib.core.infs.comp.ISkin;
+	import sglib.display.base.VisualObject;
 	
 	/**
-	 * ...
-	 * @author Khac-Thanh
- 	 * khacthanh.1985@gmail.com
+	 * @version 0.1.0
+	 * @author thienhaflash (thienhaflash@gmail.com)
+	 * @note 
+	 * 
+	 * @update 23 April 2010 (0.1.0)
 	 */
-	public class Progress implements IProgress
+	public class Progress extends VisualObject implements IProgress
 	{
 		protected var _progress : Numeric;
-		protected var _skin		: IProgressSkin;
-		
-		public function Progress() 
-		{
-			
-		}
 		
 		public function setProgress(pvalue:Numeric):IProgress
 		{
 			if (_progress) _progress.remLsn(_onProgress);
 			_progress = pvalue;
 			_progress.addLsn(_onProgress);
-			_onProgress();//update view
-			return this;
 		}
 		
-		private function _onProgress():void
-		{
-			trace('on Progress ');
-			if (_skin) _skin.onProgress(_progress.value);
+		protected function _onProgress(): void {
+			//update skin
 		}
-		
-		public function setSkin(pskin:IProgressSkin):IProgress
-		{
-			_skin = pskin;
-			if (_progress) {
-				_skin.onProgress(_progress.value);
-				trace('addListeners');
-			}
-			return this;
-		}
-		
-		public function seek(pvalue:Number):IProgress
-		{
-			//do seek
-			return this;
-		}
-		
-		/* INTERFACE sglib.core.infs.comp.IProgress */
-		
-		public function get skin():IProgressSkin
-		{
-			return _skin;
-		}
-		
 	}
 	
 }

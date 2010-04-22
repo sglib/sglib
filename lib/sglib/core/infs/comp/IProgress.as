@@ -12,9 +12,6 @@
 	public interface IProgress 
 	{
 		function setProgress(pvalue: Numeric):IProgress;
-		function seek(pvalue: Number):IProgress;
-		function setSkin(pskin: IProgressSkin):IProgress;
-		function get skin(): IProgressSkin;
 	}
 	
 }

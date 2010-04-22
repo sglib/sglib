@@ -68,4 +68,6 @@ to handle other event (like firstly only handle COMPLETE, then when finalize we 
 12. Calling js by ExternalInterface.call can lead to code executation skipping - need more experiments to check - Make sure to delay a bit before calling js function
 	Make sure that you wrap parameters to String before sending them to js or else it won't call the js function (die silently)
 	
+13. VisualObject already support changing target which also means runtime changing skin, we don't to implement any IComponentSkin
+	
 Quick Ones : Uploader / Webcam support / Peer2Peer ?

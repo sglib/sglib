@@ -3,11 +3,13 @@
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import sglib.comp.progress.Progress;
+	import sglib.comp.progress.ProgressBar;
 	import sglib.comp.progress.ProgressBarSkin;
 	import sglib.controller.play.PlayerAudio;
 	import sglib.controller.play.PlayerVideo;
+	import sglib.core.data.Numeric;
 	import sglib.core.data.State;
-	import sglib.core.infs.comp.IProgressSkin;
+	import sglib.core.infs.comp.IProgress;
 	import sglib.core.infs.load.ILoaderAudio;
 	import sglib.core.infs.play.IPlayerAudio;
 	import sglib.core.infs.visual.IVisualVideo;
@@ -33,39 +35,15 @@
 			
 			pl = new PlayerAudio();
 			pl.play('1.mp3');
-			//pl.playProgress.addLsn(onPlayProgress);
-			//stage.addEventListener(MouseEvent.CLICK, onClick);
 			
 			p = new Progress();
 			p.setProgress(pl.playProgress);
 			
-			var sk : IProgressSkin = new ProgressBarSkin();
+			var sk : IProgress = new ProgressBar();
 			sk.view = newSkin();
 			p.setSkin(sk);
 			addChild(p.skin.view);			
 		}
-		
-		//private function onChangeStatus(st: State):void
-		//{
-			//trace(st.value);
-		//}
-		//
-		//private function update():void
-		//{
-			//var pctX : Number = stage.mouseX / stage.stageWidth;
-			//var pctY : Number = stage.mouseY / stage.stageHeight;
-			//
-			//vd.setReg(pctX, pctY);
-			//vd.view.rotation++;
-		//}
-		//
-		//private function onClickVideo(e:MouseEvent):void 
-		//{
-			//vd.asPlayer.toggle();
-			//trace(vd.asPlayer.playStatus.value)
-		//}
-		
-		
 		
 		public function newSkin(): Sprite {
 			var sprt : Sprite = new Sprite();
