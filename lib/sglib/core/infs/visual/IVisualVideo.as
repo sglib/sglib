@@ -10,13 +10,10 @@
 	 * 
 	 * @update 14 April 2010 (0.1.0)
 	 */
-	public interface IVisualVideo extends IVisualObject
+	public interface IVisualVideo extends IVisualEx
 	{
 		function get asLoader(): ILoaderVideo;
 		function get asPlayer(): IPlayerVideo;
-		
-		function get url(): String;
-		function set url(purl: String): void;
 	}
 	
 }

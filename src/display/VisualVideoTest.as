@@ -28,7 +28,6 @@
 			var b : LoaderVideo;
 			var c : VisualVideo;
 			
-			//vd = instantiate('sglib.display.base.VisualVideo') as IVisualVideo;
 			vd = newVisualVideo();
 			vd.asPlayer.playStatus.addLsn(onChangeStatus, [vd.asPlayer.playStatus]);
 			addChild(vd.view);

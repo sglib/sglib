@@ -25,8 +25,8 @@
 			ld = newLoaderVideo();
 			ld	.onLoadProgress(_onProgress)
 				.onLoadStatus(_onStatus)
-				.startLoad('http://www.albumcuatui.net/thienhaflash/ActionScript 3 Log.flv?' + Math.random());
-				//.startLoad('1.flv');
+				//.startLoad('http://www.albumcuatui.net/thienhaflash/ActionScript 3 Log.flv?' + Math.random());
+				.startLoad('1.flv');
 				
 			video = new Video();
 			video.attachNetStream(ld.stream);

@@ -11,7 +11,6 @@
 	import sglib.core.utils.drwRect;
 	import sglib.core.utils.pct2Val;
 	import sglib.core.utils.val2Pct;
-	import sglib.display.base.VisualObject;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash

@@ -1,4 +1,4 @@
-﻿package sglib.display.base 
+﻿package sglib.display.base
 {
 	import flash.display.Bitmap;
 	import flash.display.DisplayObject;
