@@ -12,6 +12,11 @@
 	public interface IProgress extends IComponent
 	{
 		function setProgress(pvalue: Numeric):IProgress;
+		
+		function get seekable():Boolean;
+		
+		function set seekable(value:Boolean):void;
+		
 	}
 	
 }

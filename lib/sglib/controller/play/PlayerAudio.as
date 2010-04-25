@@ -23,6 +23,7 @@
 	{
 		protected var _loader	: ILoaderAudio;
 		protected var _channel	: SoundChannel;
+		protected var _position	: Number;
 		
 		public function PlayerAudio(ploader : ILoaderAudio = null) 
 		{
@@ -34,7 +35,10 @@
 			} else {
 				_loader.onLoadStatus(_onLoadStatus);
 			}
+			
+			_progress.addLsn(_onProgress);
 		}
+		
 		
 		private function _onLoadStatus():void
 		{
@@ -52,18 +56,18 @@
 		{
 			updateChannel(_channel ? _channel.position / 1000 : 0);//resume playing or start from 0
 			_seekable = true;
-			Frame.onEnter(_onProgress, null, false);
+			Frame.onEnter(_onPlayProgress, null, false);
 		}
 		
 		override protected function _pause():void 
 		{
-			Frame.remove(_onProgress);
+			Frame.remove(_onPlayProgress);
 			_channel.stop();
 		}
 		
 		override protected function _stop():void 
 		{
-			Frame.remove(_onProgress);
+			Frame.remove(_onPlayProgress);
 			_channel.stop();
 			updateChannel(0);
 		}
@@ -97,8 +101,13 @@
 			_onSeek();
 		}
 		
-		protected function _onProgress(): void {
-			_progress.value = (_duration > 0) ? _channel.position / _duration / 1000 : 0;
+		protected function _onPlayProgress(): void {
+			_position = (_duration > 0) ? _channel.position / _duration / 1000 : 0;
+			_progress.value = _position;
+		}
+		
+		private function _onProgress():void{
+			if (_position != _progress.value) _seek(_progress.value * _duration);
 		}
 		
 	/******************************

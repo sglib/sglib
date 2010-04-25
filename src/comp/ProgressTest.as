@@ -2,7 +2,8 @@
 {
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
-	import sglib.comp.progress.Progress;
+	import sglib.comp.Progress;
+	
 	import sglib.comp.progress.ProgressBar;	
 	import sglib.controller.play.PlayerAudio;
 	import sglib.controller.play.PlayerVideo;
@@ -48,8 +49,9 @@
 			pl.play('1.mp3');
 			pl.onPlayProgress(onPlaying);*/
 		
-			var sk : IProgress = new ProgressBar();
-			sk.view = newSkin();
+			var sk:IProgress = new ProgressBar();
+			sk.seekable = true;
+			sk.view = newSkin();		
 			addChild(sk.view);
 			
 			

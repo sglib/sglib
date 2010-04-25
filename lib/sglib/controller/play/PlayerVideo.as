@@ -25,6 +25,8 @@
 			(_loader as ILoaderInternal).iPlayer = this;
 			_loader.loadInfo.addLsn(_onLoaderInfo);
 			_position = 0;
+			
+			_progress.addLsn(_onProgress);
 		}
 		
 		private function _onLoaderInfo():void
@@ -42,19 +44,19 @@
 		{
 			_loader.stream.play(_loader.url);
 			if (_position > 0) _seek(_position);
-			Frame.onEnter(_onProgress, null, false);
+			Frame.onEnter(_onPlayProgress, null, false);
 		}
 		
 		override protected function _pause():void 
 		{
 			_position = _loader.stream.time;
-			Frame.remove(_onProgress);
+			Frame.remove(_onPlayProgress);
 			_loader.stream.pause();
 		}
 		
 		override protected function _stop():void 
 		{
-			Frame.remove(_onProgress);
+			Frame.remove(_onPlayProgress);
 			_loader.stream.pause();
 			_seek(0);
 			_position = 0;
@@ -70,7 +72,35 @@
 		
 		public function get loader():ILoaderVideo { return _loader; }
 		
-		//private function _onNetStatus(e:NetStatusEvent):void 
+		
+		
+	/******************************
+	 * 		EVENT HANDLERS
+	 *****************************/
+		
+		override protected function _seek(time:Number):void 
+		{
+			_loader.stream.seek(time);
+			_position = _loader.stream.time;
+			_seekable = true;
+			//Frame.onEnter(_onSeek); /* fake :: seek won't complete next frame, check for netstatus instead */
+		}
+		
+		protected function _onPlayProgress(): void {
+			_position = (_duration > 0) ? _loader.stream.time / _duration : 0;
+			_progress.value = _position;
+		}
+		
+		private function _onProgress():void
+		{
+			if (_position != _progress.value) _seek(_progress.value * _duration);
+		}
+		
+	}
+}
+
+
+//private function _onNetStatus(e:NetStatusEvent):void 
 		//{
 			//trace(e.info.code, _ns.bufferLength/_ns.bufferTime);
 			//
@@ -112,22 +142,3 @@
 			//}
 			//_onInfo(null);
 		//}
-		
-	/******************************
-	 * 		EVENT HANDLERS
-	 *****************************/
-		
-		override protected function _seek(time:Number):void 
-		{
-			_loader.stream.seek(time);
-			_position = _loader.stream.time;
-			_seekable = true;
-			//Frame.onEnter(_onSeek); /* fake :: seek won't complete next frame, check for netstatus instead */
-		}
-		
-		protected function _onProgress(): void {
-			_progress.value = (_duration > 0) ? _loader.stream.time / _duration : 0;
-		}
-	}
-
-}
