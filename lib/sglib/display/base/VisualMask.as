@@ -5,7 +5,7 @@
 	import sglib.core.constant.LoadStatus;
 	import sglib.core.data.Numeric;
 	import sglib.core.infs.ITransition;
-	import sglib.core.infs.visual.IMaskedView;
+	import sglib.core.infs.visual.IVisualMask;
 	import sglib.core.infs.visual.IVisualGraphic;
 	import sglib.core.infs.visual.IVisualObject;
 	import sglib.core.utils.drwRect;
@@ -18,7 +18,7 @@
 	 * 
 	 * @update 18 April 2010 (0.1.0)
 	 */
-	public class MaskedView extends VisualObject implements IMaskedView
+	public class VisualMask extends VisualObject implements IVisualMask
 	{
 		protected var _mask		: DisplayObject;
 		protected var _holder	: Sprite;
@@ -30,7 +30,7 @@
 		protected var _vtPosition	: Numeric;
 		protected var _vtRelation	: Numeric;
 		
-		public function MaskedView(ptarget: DisplayObject = null, pwidth: int = 100, pheight: int = 100) 
+		public function VisualMask(ptarget: DisplayObject = null, pwidth: int = 100, pheight: int = 100) 
 		{
 			super(ptarget);
 			
@@ -63,13 +63,13 @@
 			if (_content) _content.view.x = pct2Val(_width - _content.width, 0, 1 - _hzPosition.value, true);
 		}
 		
-		public function setContent(pcontent:DisplayObject):IMaskedView
+		public function setContent(pcontent:DisplayObject):IVisualMask
 		{
 			setVisualContent(_fromDisplayObject(pcontent));
 			return this;
 		}
 		
-		public function setVisualContent(pcontent:IVisualObject):IMaskedView
+		public function setVisualContent(pcontent:IVisualObject):IVisualMask
 		{
 			_content = pcontent;
 			_holder.addChild(_content.view);
@@ -90,7 +90,7 @@
 			_onHzPosition();
 		}
 		
-		public function setSize(pwidth:int, pheight:int):IMaskedView
+		public function setSize(pwidth:int, pheight:int):IVisualMask
 		{
 			_width = pwidth;
 			_height = pheight;

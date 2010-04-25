@@ -7,10 +7,10 @@
 	 * 
 	 * @update 14 April 2010 (0.1.0)
 	 */
-	public class LimitedView
+	public class VisualLimit
 	{
 		
-		public function LimitedView() 
+		public function VisualLimit() 
 		{
 			
 		}

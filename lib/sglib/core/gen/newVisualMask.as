@@ -1,6 +1,6 @@
 ﻿package sglib.core.gen 
 {
-	import sglib.core.infs.visual.IMaskedView;
+	import sglib.core.infs.visual.IVisualMask;
 	import sglib.core.utils.instantiate;
 	
 	/**
@@ -9,9 +9,9 @@
 	 * @note 
 	 * @update 19 April 2010 (0.1.0)
 	 */
-	public function newMaskedView (): IMaskedView
+	public function newVisualMask (): IVisualMask
 	{
-		return instantiate('sglib.display.base.MaskedView') as IMaskedView;
+		return instantiate('sglib.display.base.VisualMask') as IVisualMask;
 	}
 	
 }

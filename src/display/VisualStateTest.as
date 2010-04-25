@@ -4,10 +4,10 @@
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
-	import sglib.core.gen.newStateView;
-	import sglib.core.infs.visual.IStateView;
+	import sglib.core.gen.newVisualState;
+	import sglib.core.infs.visual.IVisualState;
 	import sglib.core.utils.drwRect;
-	import sglib.display.base.StateView;
+	import sglib.display.base.VisualState;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash
@@ -15,16 +15,16 @@
 	 * 
 	 * @update 14 April 2010 (0.1.0)
 	 */
-	public class StateViewTest extends Test
+	public class VisualStateTest extends Test
 	{
-		protected var sv : IStateView;
+		protected var sv : IVisualState;
 		
-		public function StateViewTest() 
+		public function VisualStateTest() 
 		{
 			//import
-			var a : StateView;
+			var a : VisualState;
 			
-			sv = newStateView();
+			sv = newVisualState();
 			sv.setContent(getTarget());
 			sv.state.value = 'red';
 			

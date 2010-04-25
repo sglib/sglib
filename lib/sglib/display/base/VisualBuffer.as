@@ -7,10 +7,10 @@
 	 * 
 	 * @update 14 April 2010 (0.1.0)
 	 */
-	public class BufferView
+	public class VisualBuffer
 	{
 		
-		public function BufferView() 
+		public function VisualBuffer() 
 		{
 			
 		}

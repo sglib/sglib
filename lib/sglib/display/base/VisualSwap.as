@@ -2,9 +2,8 @@
 {
 	import sglib.core.data.Numeric;
 	import sglib.core.infs.load.ILoader;
-	import sglib.core.infs.visual.ISwapView;
 	import sglib.core.infs.visual.IVisualEx;
-	import sglib.display.VisualEx;
+	import sglib.core.infs.visual.IVisualSwap;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash
@@ -12,7 +11,7 @@
 	 * 
 	 * @update 14 April 2010 (0.1.0)
 	 */
-	public class SwapView extends VisualObject implements ISwapView
+	public class VisualSwap extends VisualObject implements IVisualSwap
 	{
 		protected var view1			: IVisualEx;
 		protected var view2			: IVisualEx;
@@ -21,12 +20,12 @@
 		protected var _is1			: Boolean;
 		protected var _progress		: Numeric; /* unified by view1's progress && view2's progress */
 		
-		public function SwapView() 
+		public function VisualSwap() 
 		{
 			_progress = new Numeric();
 		}
 		
-		public function setViewElements(pview1:IVisualEx, pview2:IVisualEx):IVisualEx
+		public function setViewElements(pview1:IVisualEx, pview2:IVisualEx):IVisualSwap
 		{
 			//TODO : Remove old view1, view2
 			
@@ -37,6 +36,7 @@
 			
 			view1.loadProgress.addLsn(_onProgress, [view1.loadProgress]);
 			view2.loadProgress.addLsn(_onProgress, [view2.loadProgress]);
+			return this;
 		}
 		
 		protected function _onProgress(pprogress: Numeric):void

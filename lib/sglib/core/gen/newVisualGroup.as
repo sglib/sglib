@@ -1,6 +1,6 @@
 ﻿package sglib.core.gen 
 {
-	import sglib.core.infs.visual.IGroupView;
+	import sglib.core.infs.visual.IVisualGroup;
 	import sglib.core.utils.instantiate;
 	
 	/**
@@ -9,9 +9,9 @@
 	 * @note 
 	 * @update 19 April 2010 (0.1.0)
 	 */
-	public function newGroupView() : IGroupView
+	public function newVisualGroup() : IVisualGroup
 	{
-		return instantiate('sglib.display.base.GroupView') as IGroupView;
+		return instantiate('sglib.display.base.VisualGroup') as IVisualGroup;
 	}
 	
 }

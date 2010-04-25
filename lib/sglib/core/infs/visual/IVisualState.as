@@ -10,10 +10,10 @@
 	 * 
 	 * @update 14 April 2010 (0.1.0)
 	 */
-	public interface IStateView extends IVisualObject
+	public interface IVisualState extends IVisualObject
 	{
 		function get state(): State;
-		function setContent(ptarget: DisplayObject):IStateView;
+		function setContent(ptarget: DisplayObject):IVisualState;
 	}
 	
 }

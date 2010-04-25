@@ -10,11 +10,10 @@
 	 * 
 	 * @update 14 April 2010 (0.1.0)
 	 */
-	public interface IGroupView extends IVisualObject
+	public interface IVisualGroup extends IVisualObject
 	{
-		function setContent(...pchildren): IGroupView;
-		function generateContent(nChild : int, fInit: Function): IGroupView;
-		function setLayout(playout: ILayout): IGroupView;
+		function setContent(pchildren: Array): IVisualGroup;
+		function setLayout(playout: ILayout): IVisualGroup;
 		function get group(): Group;
 	}
 	

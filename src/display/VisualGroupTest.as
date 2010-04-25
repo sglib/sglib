@@ -1,12 +1,13 @@
 ﻿package display 
 {
 	import flash.display.Sprite;
-	import sglib.core.gen.newGroupView;
 	import sglib.core.gen.newLayoutGrid;
 	import sglib.core.gen.newLayoutList;
-	import sglib.core.infs.visual.IGroupView;
+	import sglib.core.gen.newVisualGroup;
+	import sglib.core.infs.visual.IVisualGroup;
 	import sglib.core.utils.drwRect;
-	import sglib.display.base.GroupView;
+	import sglib.core.utils.itemGenerate;
+	import sglib.display.base.VisualGroup;
 	import sglib.service.layout.LayoutGrid;
 	import sglib.service.layout.LayoutList;
 	/**
@@ -16,25 +17,25 @@
 	 * 
 	 * @update 14 April 2010 (0.1.0)
 	 */
-	public class GroupViewTest extends Test
+	public class VisualGroupTest extends Test
 	{
-		protected var _gv : IGroupView;
+		protected var _gv : IVisualGroup;
 		
-		public function GroupViewTest() 
+		public function VisualGroupTest() 
 		{
 			//import 
-			var a : GroupView;
+			var a : VisualGroup;
 			var b : LayoutGrid;
 			var c : LayoutList;
 			
-			_gv = newGroupView()
+			_gv = newVisualGroup()
 					.setLayout(newLayoutGrid().config(20, 20, 5))
-					.generateContent(100, newItem);
+					.setContent(itemGenerate(100, newItem));
 			addChild(_gv.view);
 			
-			_gv = newGroupView()
+			_gv = newVisualGroup()
 					.setLayout(newLayoutList().config(5, false))
-					.setContent(newItem1, newItem1, newItem1, newItem1, newItem1);
+					.setContent([newItem1, newItem1, newItem1, newItem1, newItem1]);
 			addChild(_gv.view);
 			_gv.view.x = 200;
 		}

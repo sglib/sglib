@@ -3,7 +3,7 @@
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import sglib.core.data.State;
-	import sglib.core.infs.visual.IStateView;
+	import sglib.core.infs.visual.IVisualState;
 	import sglib.core.utils.removeChildren;
 	/**
 	 * @version 0.1.0
@@ -12,12 +12,12 @@
 	 * 
 	 * @update 14 April 2010 (0.1.0)
 	 */
-	public class StateView extends VisualObject implements IStateView
+	public class VisualState extends VisualObject implements IVisualState
 	{
 		protected var _state	: State;
 		protected var _target	: Sprite;
 		
-		public function StateView() 
+		public function VisualState() 
 		{
 			_state = new State();
 			_state.addLsn(onChangeState);
@@ -31,7 +31,7 @@
 		
 		public function get state():State { return _state; }
 		
-		public function setContent(ptarget:DisplayObject):IStateView
+		public function setContent(ptarget:DisplayObject):IVisualState
 		{
 			_target = ptarget as Sprite;
 			removeChildren(_target);
