@@ -3,8 +3,7 @@
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	import sglib.comp.progress.Progress;
-	import sglib.comp.progress.ProgressBar;
-	import sglib.comp.progress.ProgressBarSkin;
+	import sglib.comp.progress.ProgressBar;	
 	import sglib.controller.play.PlayerAudio;
 	import sglib.controller.play.PlayerVideo;
 	import sglib.core.data.Numeric;
@@ -12,6 +11,7 @@
 	import sglib.core.infs.comp.IProgress;
 	import sglib.core.infs.load.ILoaderAudio;
 	import sglib.core.infs.play.IPlayerAudio;
+	import sglib.core.infs.play.IPlayerVideo;
 	import sglib.core.infs.visual.IVisualVideo;
 	import sglib.core.utils.drwRect;
 	import sglib.core.utils.Frame;
@@ -29,21 +29,37 @@
 		protected var pl : IPlayerAudio;
 		protected var p  : Progress;
 		
+		protected var vl:IVisualVideo;
+		
 		public function ProgressTest() 
 		{
 			var a : LoaderAudio;
+			var v: PlayerVideo;
+			var l:LoaderVideo;
 			
-			pl = new PlayerAudio();
+			
+			
+			vl = new VisualVideo();
+			vl.asPlayer.play("1.flv");
+			vl.asPlayer.onPlayProgress(onPlaying);
+			addChild(vl.view);
+			
+			/*pl = new PlayerAudio();
 			pl.play('1.mp3');
-			
-			p = new Progress();
-			p.setProgress(pl.playProgress);
-			
+			pl.onPlayProgress(onPlaying);*/
+		
 			var sk : IProgress = new ProgressBar();
 			sk.view = newSkin();
-			p.setSkin(sk);
-			addChild(p.skin.view);			
+			addChild(sk.view);
+			
+			
+			sk.setProgress(vl.asPlayer.playProgress);
+			
 		}
+		private function onPlaying():void {
+			//trace(this, pl.playProgress.value);
+		}
+		
 		
 		public function newSkin(): Sprite {
 			var sprt : Sprite = new Sprite();

@@ -33,6 +33,7 @@
 		protected var _ns		: NetStream;
 		protected var _nc		: NetConnection;
 		
+		protected var _metadata	: Object;
 		protected var _buffering: Boolean;
 		protected var _buffer	: Numeric;
 		protected var _player	: IPlayerVideo;
@@ -49,6 +50,11 @@
 			_buffer = new Numeric();
 		}
 		
+		override public function set url(value:String):void 
+		{
+			super.url = value;
+			_metadata = null;
+		}
 		
 	/******************************
 	 *	INTERNAL FUNCTIONALITY
@@ -116,9 +122,15 @@
 			//TODO : Gabage collect for old _nc, _ns
 			_nc.connect(pserver);
 			_ns = new NetStream(_nc);
-			_ns.client = {onMetaData : trace}; /* quick fix */
+			_ns.client = {onMetaData : _onMetaData}; /* quick fix */
 			
 			return this;
+		}
+		
+		private function _onMetaData(info: Object):void
+		{
+			_metadata = info;
+			_onInfo('METADATA');
 		}
 		
 		/**
@@ -133,12 +145,22 @@
 		/**
 		 * @inheritDoc
 		 */
+		public function get metadata():Object
+		{
+			return _metadata;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
 		public function get player():IPlayerVideo{ return _player}
 		
 		/**
 		 * @inheritDoc
 		 */
 		public function get stream():NetStream { return _ns; }
+		
+		
 		
 	}
 

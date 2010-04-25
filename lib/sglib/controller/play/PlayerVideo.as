@@ -23,8 +23,15 @@
 		{
 			_loader = ploader ? ploader : newLoaderVideo();//instantiate('sglib.service.load.LoaderVideo') as ILoaderVideo
 			(_loader as ILoaderInternal).iPlayer = this;
-			
+			_loader.loadInfo.addLsn(_onLoaderInfo);
 			_position = 0;
+		}
+		
+		private function _onLoaderInfo():void
+		{
+			if (_loader.loadInfo.value=='METADATA') {
+				_duration = _loader.metadata.duration || 0;
+			}
 		}
 		
 	/******************************

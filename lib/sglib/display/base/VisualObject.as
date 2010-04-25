@@ -120,6 +120,11 @@
 		 */
 		public function get status():State{ return _status }
 		
+		public function set view(value:Sprite):void 
+		{
+			_view = value;
+		}
+		
 	}
 
 }

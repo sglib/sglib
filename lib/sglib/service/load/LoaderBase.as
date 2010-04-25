@@ -69,6 +69,7 @@
 		
 		protected function _onError(e:Event):void 
 		{
+			trace(this, e);
 			_remLsn();
 			_status.value = LoadStatus.ERROR;
 		}
@@ -79,9 +80,9 @@
 			_status.value = LoadStatus.COMPLETED;
 		}
 		
-		protected function _onInfo(e:Event):void 
+		protected function _onInfo(e:* = null):void 
 		{
-			trace('Loader :: ', e);
+			_info.setInfo(e, null);
 		}
 		
 	/******************************

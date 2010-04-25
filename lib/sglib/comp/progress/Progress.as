@@ -1,9 +1,7 @@
 ﻿package sglib.comp.progress 
 {
 	import sglib.core.data.Numeric;
-	import sglib.core.infs.comp.IProgress;
-	import sglib.core.infs.comp.IProgressSkin;
-	import sglib.core.infs.comp.ISkin;
+	import sglib.core.infs.comp.IProgress;	
 	import sglib.display.base.VisualObject;
 	
 	/**
@@ -22,6 +20,8 @@
 			if (_progress) _progress.remLsn(_onProgress);
 			_progress = pvalue;
 			_progress.addLsn(_onProgress);
+			
+			return this;
 		}
 		
 		protected function _onProgress(): void {

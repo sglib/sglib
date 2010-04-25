@@ -41,6 +41,8 @@
 		 * the player attached to this Video - can be null
 		 */
 		function get player(): IPlayerVideo;
+		
+		function get metadata():Object;
 	}
 	
 }

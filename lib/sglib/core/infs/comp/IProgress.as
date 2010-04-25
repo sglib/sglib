@@ -9,7 +9,7 @@
 	 * 
 	 * @update 14 April 2010 (0.1.0)
 	 */
-	public interface IProgress 
+	public interface IProgress extends IComponent
 	{
 		function setProgress(pvalue: Numeric):IProgress;
 	}

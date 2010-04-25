@@ -18,6 +18,8 @@
 		 */
 		function get view() : Sprite;
 		
+		function set view(pview:Sprite):void;
+		
 		
 		/**
 		 * reset the registry point
