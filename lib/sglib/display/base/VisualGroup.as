@@ -5,6 +5,7 @@
 	import sglib.core.infs.layout.ILayout;
 	import sglib.core.infs.visual.IVisualGroup;
 	import sglib.core.infs.visual.IVisualGroup;
+	import sglib.core.utils.addChildren;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash
@@ -26,17 +27,12 @@
 		public function setContent(pchildren: Array):IVisualGroup
 		{
 			_items = pchildren;
-			
-			//trace(_items, _items.length);
 			_group = new Group(_items.length, -1);
-			_layout.refresh(_items);
-			
-			for (var i: int = 0; i < _group.total; i++) {
-				_view.addChild(_items[i]);
-			}
-			
+			addChildren(_view, _items);
 			_width = _layout.width;
 			_height = _layout.height;
+			
+			_layout.refresh(_items);
 			return this;
 		}
 		
@@ -44,6 +40,8 @@
 			_layout = playout; 
 			return this;
 		}
+		
+		public function get items():Array { return _items }
 		
 		public function get group():Group { return _group }
 		

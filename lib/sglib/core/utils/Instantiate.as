@@ -4,10 +4,14 @@
 	
 	/**
 	 * @version 0.1.0
-	 * @author thienhaflash
-	 * @note 
-	 * 
-	 * @update 14 April 2010 (0.1.0)
+	 * @author thienhaflash (thienhaflash@gmail.com)
+	 * @update 26 April 2010 (0.1.0)
+	 */
+	
+	/**
+	 * generate class instances from the full class name (package.ClassName)
+	 * @param	pname the name of the class to be instantiated
+	 * @return
 	 */
 	public function instantiate(pname: String) : Object
 	{

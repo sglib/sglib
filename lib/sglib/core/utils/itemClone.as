@@ -5,11 +5,18 @@ package sglib.core.utils
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash (thienhaflash@gmail.com)
-	 * @note 
-	 * 
-	 * @update 14 April 2010 (0.1.0)
+	 * @update 26 April 2010 (0.1.0)
 	 */
-	public function itemClone(pn: int, psource: Object, pfInit: Function = null, preuse : Boolean = false) : Array
+	
+	/**
+	 * generate nItems by cloning from a sample Object
+	 * @param	pnItems number of items to be generated
+	 * @param	psource the sampling Object (should always have a linked name)
+	 * @param	pfInit the function to be called, should be in the form of fInit(obj: Object, id: int): Object
+	 * @param	preuse use the sampling Object as the first item or not
+	 * @return
+	 */
+	public function itemClone(pnItems: int, psource: Object, pfInit: Function = null, preuse : Boolean = false) : Array
 	{
 		var arr	: Array = [];
 		var cls : Class = psource.constructor as Class;
@@ -23,7 +30,7 @@ package sglib.core.utils
 			if (pfInit != null) pfInit(psource, 0); 		
 		}
 		
-		for (; i < pn; i++) {
+		for (; i < pnItems; i++) {
 			itm = new cls();
 			items.push(itm);
 			if (pfInit != null) pfInit(itm, i);

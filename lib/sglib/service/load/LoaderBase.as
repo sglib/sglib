@@ -12,8 +12,9 @@
 	import sglib.core.infs.load.ILoaderInternal;
 	import sglib.core.infs.play.IPlayer;
 	/**
-	 * ...
+	 * @version 0.1.0
 	 * @author thienhaflash (thienhaflash@gmail.com)
+	 * @update 26 April 2010 (0.1.0)
 	 */
 	internal class LoaderBase implements ILoader, ILoaderInternal
 	{

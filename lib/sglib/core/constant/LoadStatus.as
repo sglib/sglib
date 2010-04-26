@@ -1,12 +1,9 @@
-﻿package sglib.core.constant 
+﻿package sglib.core.constant
 {
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash (thienhaflash@gmail.com)
-	 * @note 
-	 *  	
-	 * @update 04 April 2010 (0.1.0)
-	 *
+	 * @update 26 April 2010 (0.1.0)
 	 */
 	public class LoadStatus
 	{
