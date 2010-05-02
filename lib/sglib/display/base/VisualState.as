@@ -4,13 +4,11 @@
 	import flash.display.Sprite;
 	import sglib.core.data.State;
 	import sglib.core.infs.visual.IVisualState;
-	import sglib.core.utils.removeChildren;
+	import sglib.core.utils.display.removeChildren;
 	/**
 	 * @version 0.1.0
-	 * @author thienhaflash
-	 * @note 
-	 * 
-	 * @update 14 April 2010 (0.1.0)
+	 * @author thienhaflash (thienhaflash@gmail.com)
+	 * @update 26 April 2010 (0.1.0)
 	 */
 	public class VisualState extends VisualObject implements IVisualState
 	{

@@ -3,12 +3,12 @@ package sglib.display.base
 	import sglib.core.data.Group;
 	import sglib.core.infs.visual.IVisualGroup;
 	import sglib.core.infs.visual.IVisualLimit;
+	import sglib.core.utils.copyObj;
+	import sglib.core.utils.midObj;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash (thienhaflash@gmail.com)
-	 * @note 
-	 * 
-	 * @update 14 April 2010 (0.1.0)
+	 * @update 02 May 2010 (0.1.0)
 	 */
 	public class VisualLimit extends VisualObject implements IVisualLimit
 	{
@@ -61,7 +61,7 @@ package sglib.display.base
 					copyObj(o, (delta < 0) ? _states[0]: _states[_states.length - 1]) ;
 				} else {
 					copyObj(o, midObj(_states[delta + h + 1], _states[delta + h + 2], 1 - pct));
-					adds[ -Math.abs(i - Math.round(_stateVal)) + _states.length-1] = o;
+					adds[ -Math.abs(i - Math.round(_stateVal)) + _states.length-1] = o; /* reserve children's depth */
 				}
 			}
 			
