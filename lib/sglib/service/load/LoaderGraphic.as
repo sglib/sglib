@@ -13,7 +13,9 @@
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
 	import flash.system.SecurityDomain;
+	import flash.utils.Dictionary;
 	import sglib.core.constant.LoadStatus;
+	import sglib.core.infs.IGraphicCacher;
 	import sglib.core.infs.load.ILoaderGraphic;
 	import sglib.core.infs.play.IPlayer;
 	import sglib.core.infs.play.IPlayerGraphic;
@@ -29,8 +31,12 @@
 		protected var _smooth		: Boolean = true; /* smooth bitmap or not */
 		
 		protected var _loader		: Loader;
+		protected var _content		: DisplayObject;
 		protected var _unloading	: Boolean; /* is unloading file */
 		protected var _player		: IPlayerGraphic;
+		
+		protected var _cacher		: IGraphicCacher;
+		protected var _isCached		: Boolean;
 		
 		public function LoaderGraphic() 
 		{
@@ -61,15 +67,33 @@
 			} catch (e:Error) { }
 		}
 		
+		override public function startLoad(purl:String = null):void 
+		{
+			if (purl != null) url = purl;
+			if (_status.value == LoadStatus.IDLE || _status.value == LoadStatus.ERROR) { /* LoadStatus.COMPLETE : calling start won't restart loading */
+				_isCached = false;
+				if (_cacher) {
+					_content = _cacher.fromURL(_url);
+					_isCached = _content != null;
+					if (_isCached) _onComplete(null);/* dispatch event */
+				}
+				
+				if (!_isCached) {
+					_addLsn();
+					_start();
+					_status.value = LoadStatus.LOADING;
+					_progress.value = 0; /* reset _progress */
+				}
+			}
+		}
+		
 		override protected function _addLsn(pdispatcher:IEventDispatcher = null):void 
 		{
-			if (!_reuse) _loader = new Loader();
-			
+			if (!_reuse || !_loader) _loader = new Loader();
 			var li : LoaderInfo = _loader.contentLoaderInfo;
 			li.addEventListener(Event.OPEN, 					_onInfo);
 			li.addEventListener(Event.INIT, 					_onInfo);
 			li.addEventListener(HTTPStatusEvent.HTTP_STATUS,	_onInfo);
-			
 			super._addLsn(li);
 		}
 		
@@ -99,6 +123,17 @@
 			if (_status.value == LoadStatus.LOADING && e.target == _loader) _start(); /* resume only when using same loader */
 		}
 		
+		override protected function _onComplete(e:Event):void 
+		{
+			if (!_isCached) {
+				_remLsn();
+				_content = _loader.content;
+				if (_cacher) _cacher.setURL(_url, _content); //register
+			}
+			_progress.value = 1;
+			_status.value = LoadStatus.COMPLETED;
+		}
+		
 	/******************************
 	 *		PUBLIC METHODS
 	 *****************************/	
@@ -110,6 +145,14 @@
 		{
 			_context = new LoaderContext(pcheckPolicy, pappDomain, psecurDomain);
 			return this;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function set cacher(pcacher:IGraphicCacher):void
+		{
+			_cacher = pcacher;
 		}
 		
 		/**
@@ -130,7 +173,9 @@
 		/**
 		 * @inheritDoc
 		 */
-		public function get loadContent():DisplayObject { return (_loader && _loader.content) ? _loader.content : null; }
+		public function get loadContent():DisplayObject { return _content }
+		
+		public function get cacher():IGraphicCacher { return _cacher; }
 		
 		/**
 		 * @inheritDoc

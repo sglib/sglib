@@ -21,8 +21,8 @@
 			var b: VisualGraphic;
 			
 			vg = newVisualGraphic();
-			vg.url = 'logo.png';
-			vg.asLoader.context(true).startLoad('logo.png');
+			vg.url = '1.jpg';
+			vg.asLoader.context(true).startLoad('1.jpg');
 			addChild(vg.view);
 		
 		}

@@ -21,9 +21,9 @@
 	import sglib.service.load.LoaderVideo;
 	
 	/**
-	 * ...
-	 * @author Khac-Thanh
- 	 * khacthanh.1985@gmail.com
+	 * @version 0.1.0
+	 * @author khacthanh (khacthanh.1985@gmail.com)
+	 * @update 26 April 2010 (0.1.0)
 	 */
 	public class ProgressTest extends Test
 	{

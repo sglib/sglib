@@ -3,13 +3,10 @@ package sglib.comp.progress
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
-	import sglib.comp.Progress;
 	/**
 	 * @version 0.1.0
-	 * @author ...
-	 * @note 
-	 * 
-	 * @update 23 April 2010 (0.1.0)
+	 * @author khacthanh (khacthanh.1985@gmail.com)
+	 * @update 26 April 2010 (0.1.0)
 	 */
 	public class ProgressBar extends Progress
 	{

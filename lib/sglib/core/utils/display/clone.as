@@ -29,10 +29,14 @@ package sglib.core.utils.display
 				bmd.copyPixels(oBmd, new Rectangle(0, 0, oBmd.width, oBmd.height), new Point(0, 0));
 			}
 			pdo = new Bitmap(bmd);
+			//trace('cloning bitmap');
 		} else {
 			var cls : Class = (pdo as Object).constructor as Class;
-			if (getQualifiedClassName(pdo) == 'flash.display.MovieClip') trace(this, " can't clone a Movieclip");
-			pdo = new cls() as DisplayObject;
+			if (getQualifiedClassName(pdo) == 'flash.display.MovieClip') {
+				trace(this, " can't clone a Movieclip - using the last loaded ");
+			} else {
+				pdo = new cls() as DisplayObject;
+			}
 		}
 		
 		return pdo;

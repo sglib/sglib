@@ -77,6 +77,7 @@
 		
 		protected function _onComplete(e:Event):void 
 		{
+			_progress.value = 1;
 			_remLsn();
 			_status.value = LoadStatus.COMPLETED;
 		}

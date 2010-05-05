@@ -100,8 +100,13 @@
 		private function _onEnterFrame():void
 		{
 			_progress.value = _ns.bytesLoaded / _ns.bytesTotal;
-			
 			if ( _ns.bytesLoaded / _ns.bytesTotal >= 1) _onComplete(null);
+		}
+		
+		private function _onMetaData(info: Object):void
+		{
+			_metadata = info;
+			_onInfo('METADATA');
 		}
 		
 	/******************************
@@ -124,11 +129,6 @@
 			return this;
 		}
 		
-		private function _onMetaData(info: Object):void
-		{
-			_metadata = info;
-			_onInfo('METADATA');
-		}
 		
 		/**
 		 * @inheritDoc
@@ -156,8 +156,6 @@
 		 * @inheritDoc
 		 */
 		public function get stream():NetStream { return _ns; }
-		
-		
 		
 	}
 

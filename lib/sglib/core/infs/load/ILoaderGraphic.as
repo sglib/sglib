@@ -7,6 +7,7 @@
 	import flash.system.ApplicationDomain;
 	import flash.system.LoaderContext;
 	import flash.system.SecurityDomain;
+	import sglib.core.infs.IGraphicCacher;
 	import sglib.core.infs.play.IPlayerGraphic;
 	
 	/**
@@ -46,6 +47,16 @@
 		 * get the player attached to this loader - can be null
 		 */
 		function get player(): IPlayerGraphic;
+		
+		/**
+		 * use a graphic cacher to improve load time / memory management
+		 */
+		function set cacher(pcacher: IGraphicCacher): void;
+		
+		/**
+		 * the cacher using for this ILoaderGraphic intance - can be null
+		 */
+		function get cacher():IGraphicCacher;
 		
 	}
 	

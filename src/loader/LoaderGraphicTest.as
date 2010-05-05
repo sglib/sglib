@@ -24,7 +24,7 @@
 			ld	.context(true)
 				.onLoadProgress(onProgress)
 				.onLoadStatus(onStatus)
-				.startLoad('logo.png');
+				.startLoad('1.jpg');
 		}
 		
 		private function onProgress():void
