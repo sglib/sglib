@@ -34,7 +34,7 @@
 		
 		override protected function _start():void 
 		{
-			_sound.load(new URLRequest(_url), _context);
+			_sound.load(new URLRequest(busterURL), _context);
 		}
 		
 		override protected function _stop():void 

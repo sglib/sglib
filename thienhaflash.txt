@@ -73,6 +73,6 @@ to handle other event (like firstly only handle COMPLETE, then when finalize we 
 14. GraphicCatcher : Cache external graphics that make loading completes immediately, we won't see a splash while reloading files (useful for swapping)
 	GraphicCatcher should be external linked to LoaderGraphic in case we don't want to use it, or want to use it for multiple LoaderGraphic instances
 	
-	
+15. CacheBuster helps prevent content caching, can be used in testing or make sure content is always updated (prevent cache only for the first time)
 	
 Quick Ones : Uploader / Webcam support / Peer2Peer ?

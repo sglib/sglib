@@ -4,13 +4,17 @@
 	import sglib.core.utils.instantiate;
 	
 	/**
-	 * @version 0.1.0
+	 * @version 0.1.1
 	 * @author thienhaflash (thienhaflash@gmail.com)
-	 * @update 26 April 2010 (0.1.0)
+	 * @update 05 May 2010 (0.1.1)
+	 * 		Added support for parameters on instantiate
+	 * 
 	 */
-	public function newLayoutGrid() : ILayoutGrid
+	public function newLayoutGrid(pw: int, ph: int, pn: int, phorz: Boolean = false, px: int = 0, py: int = 0) : ILayoutGrid
 	{
-		return instantiate('sglib.service.layout.LayoutGrid') as ILayoutGrid;
+		var lg : ILayoutGrid = instantiate('sglib.service.layout.LayoutGrid') as ILayoutGrid;
+		lg.config(pw, ph, pn, phorz, px, py);
+		return lg;
 	}
 	
 }

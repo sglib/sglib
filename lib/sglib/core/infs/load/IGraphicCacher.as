@@ -1,4 +1,4 @@
-package sglib.core.infs 
+package sglib.core.infs.load 
 {
 	import flash.display.DisplayObject;
 	

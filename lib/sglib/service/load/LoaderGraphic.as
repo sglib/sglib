@@ -15,14 +15,14 @@
 	import flash.system.SecurityDomain;
 	import flash.utils.Dictionary;
 	import sglib.core.constant.LoadStatus;
-	import sglib.core.infs.IGraphicCacher;
+	import sglib.core.infs.load.IGraphicCacher;
 	import sglib.core.infs.load.ILoaderGraphic;
 	import sglib.core.infs.play.IPlayer;
 	import sglib.core.infs.play.IPlayerGraphic;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash (thienhaflash@gmail.com)
-	 * @update 26 April 2010 (0.1.0)
+	 * @update 05 May 2010 (0.1.0)
 	 */
 	public class LoaderGraphic extends LoaderBase implements ILoaderGraphic
 	{
@@ -50,7 +50,7 @@
 		override protected function _start():void 
 		{
 			if (_reuse && _unloading) return; //do pending action only when using the same loader && is unloading
-			_loader.load(new URLRequest(_url), _context);
+			_loader.load(new URLRequest(busterURL), _context);
 		}
 		
 		override protected function _stop():void 

@@ -37,6 +37,13 @@
 		
 		
 		/**
+		 * set cache buster
+		 */
+		function set cacheBuster(pvaulue: ICacheBuster):void;
+		
+		
+		
+		/**
 		 * [Bindable] the loading progress, aka, bytesLoaded/bytesTotal
 		 */
 		function get loadProgress(): Numeric;
@@ -50,7 +57,6 @@
 		 * [Bindable]
 		 */
 		function get loadInfo():Info;
-		
 		
 		
 		/**

@@ -8,6 +8,7 @@
 	import sglib.core.data.Info;
 	import sglib.core.data.State;
 	import sglib.core.data.Numeric;
+	import sglib.core.infs.load.ICacheBuster;
 	import sglib.core.infs.load.ILoader;
 	import sglib.core.infs.load.ILoaderInternal;
 	import sglib.core.infs.play.IPlayer;
@@ -23,6 +24,7 @@
 		protected var _info		: Info;
 		
 		protected var _url		: String;
+		protected var _cacheBuster	: ICacheBuster;
 		
 		public function LoaderBase() 
 		{
@@ -148,6 +150,17 @@
 			return this;
 		}
 		
+		/**
+		 * @inheritDoc
+		 */
+		public function set cacheBuster(pvaulue:ICacheBuster):void
+		{
+			_cacheBuster = pvaulue;
+		}
+		
+		protected function get busterURL():String {
+			return (_cacheBuster) ? _cacheBuster.fromURL(url) : url;
+		}
 		
 		/**
 		 * @inheritDoc

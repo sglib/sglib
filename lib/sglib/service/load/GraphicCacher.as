@@ -1,13 +1,13 @@
-package sglib.service 
+package sglib.service.load
 {
 	import flash.display.DisplayObject;
 	import flash.utils.Dictionary;
-	import sglib.core.infs.IGraphicCacher;
+	import sglib.core.infs.load.IGraphicCacher;
 	import sglib.core.utils.display.clone;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash (thienhaflash@gmail.com)
-	 * @update 02 May 2010 (0.1.0)
+	 * @update 05 May 2010 (0.1.0)
 	 */
 	public class GraphicCacher implements IGraphicCacher
 	{

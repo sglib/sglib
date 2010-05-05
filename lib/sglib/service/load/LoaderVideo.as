@@ -59,8 +59,8 @@
 		
 		override protected function _start():void 
 		{
-			//TODO : take _offset into accoun
-			_ns.play(_url);
+			//TODO : take _offset into account
+			_ns.play(busterURL);
 			_ns.bufferTime = 5;
 			_ns.pause(); // auto pause
 			_ns.seek(0); // prevent the fast forward bug (snap to the next cue-point)

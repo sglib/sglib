@@ -5,10 +5,12 @@
 	import flash.system.LoaderContext;
 	import sglib.core.constant.LoadStatus;
 	import sglib.core.debug.doGC;
+	import sglib.core.gen.newGraphicCacher;
 	import sglib.core.gen.newLoaderGraphic;
+	import sglib.core.infs.load.IGraphicCacher;
 	import sglib.core.infs.load.ILoaderGraphic;
 	import sglib.core.utils.Frame;
-	import sglib.service.GraphicCacher;
+	import sglib.service.load.GraphicCacher;
 	import sglib.service.load.LoaderGraphic;
 	/**
 	 * @version 0.1.0
@@ -17,7 +19,7 @@
 	 */
 	public class LoaderGraphicCacherTest extends MovieClip
 	{
-		private var cc		: GraphicCacher;
+		private var cc		: IGraphicCacher;
 		private var id		: int;
 		protected var arr	: Array;
 		
@@ -28,13 +30,14 @@
 		{
 			//import
 			var a : LoaderGraphic;
+			var b : GraphicCacher;
 			
-			cc	= new GraphicCacher(true);
+			cc	= newGraphicCacher();
 			arr = [];
 			
 			//make a sequence loading
 			var ld	: ILoaderGraphic;
-			for (var i: int = 0; i < 64; i++) {
+			for (var i: int = 0; i < 96; i++) {
 				ld = newLoaderGraphic();
 				if (useCacher) ld.cacher = cc;
 				ld.url = '1.jpg';
