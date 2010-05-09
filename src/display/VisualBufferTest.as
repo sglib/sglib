@@ -26,7 +26,7 @@ package display
 		
 		public function VisualBufferTest() 
 		{
-			bv = new VisualBuffer();
+			bv = newVisualBuffer();
 			addChild(bv.view);
 			
 			var arr : Array = [];
@@ -35,7 +35,7 @@ package display
 			}
 			
 			bv.position = position = new Numeric(0);
-			bv.setConfig(arr, n, updateItem, 18);
+			bv.setConfig(arr, n, updateItem);
 		}
 		
 		override protected function _onEnterFrame(e:Event):void 

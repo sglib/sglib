@@ -10,8 +10,6 @@ package sglib.core.infs.visual
 	 */
 	public interface IVisualBuffer extends IVisualObject
 	{
-		//function set group(pvalue: Group):void;
-		//function set laziness(pvalue: int):void; // = n visible
 		function set position(pvalue: Numeric):void;
 		function setConfig(pitems:Array, ptotal: int, pmodify:Function, pnView: int = -1):void;
 		function get pos(): Number;
