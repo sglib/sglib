@@ -6,7 +6,6 @@
 	import sglib.core.constant.VisualStatus;
 	import sglib.core.data.State;
 	import flash.display.Sprite;
-	import sglib.core.infs.ITransition;
 	import sglib.core.infs.visual.IVisualObject;
 	/**
 	 * @version 0.1.0

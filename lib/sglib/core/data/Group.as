@@ -25,6 +25,8 @@
 		
 		public function set active(pvalue:int):void 
 		{
+			if (pvalue > _total) pvalue = _total;
+			
 			if ((pvalue != _active) && ((_validator==null) || _validator(pvalue))) {
 				_last = _active;
 				_active = pvalue;

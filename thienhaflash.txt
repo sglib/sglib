@@ -1,8 +1,6 @@
 ﻿This log will tell you what's going on about mid-way changing design
 
-Using .status .info to replace specific event dispatcher that is more centralize / easy to maintain. Instead of creating several handlers, one for each
-event, using .status.addLsn will call only 1 handler, user then can access .status.value to get the state and make a switch case handler, if user want
-to handle other event (like firstly only handle COMPLETE, then when finalize we can add a PROGRESS to finish things up)
+Using .status .info to replace specific event dispatcher that is more centralize / easy to maintain. Instead of creating several handlers, one for each event, using .status.addLsn will call only 1 handler, user then can access .status.value to get the state and make a switch case handler, if user want to handle other event (like firstly only handle COMPLETE, then when finalize we can add a PROGRESS to finish things up)
 
 
 1.	Got some prolem with SoundMixer : It's static and being shared over all FP instances - this make SoundMixer useless - Just skip for now - maybe remove the Visualizer from display package
@@ -33,8 +31,7 @@ to handle other event (like firstly only handle COMPLETE, then when finalize we 
 	We can encryp/inject our SWF with some bytes and put it onto the server instead of the .swf itself
 	We then load the swf's byteArray using URLStream, remove the bytes we injected + decrypt before, pass the byteArray into Loader.loadBytes
 	
-4.	Có thể dùng protected getter thay vì khai báo một biến Abstract để có được strong typing trong các classes con mà vẫn giữ được tính simple
-	(chỉ dùng 1 biến để lưu giữ thay vì 2 biến)
+4.	Có thể dùng protected getter thay vì khai báo một biến Abstract để có được strong typing trong các classes con mà vẫn giữ được tính simple (chỉ dùng 1 biến để lưu giữ thay vì 2 biến)
 	
 	Ví dụ, trong Abstract Player có sử dụng 1 biến kiểu Abstract Loader, biến này có thể là audioLoader / videoLoader / graphicLoader tùy theo
 		implement của các classes con, khi đó thay vì khai báo một biến loader : AbstractLoader ta có thể dùng 1 getter trả về abstractLoader
@@ -46,11 +43,9 @@ to handle other event (like firstly only handle COMPLETE, then when finalize we 
 	trường hợp NetStream skip Buffer.status.EMPTY / FULL.
 	Khi NetStream.bufferTime được set > duration thực của video, thì stream sẽ pause một khoảng thời gian = với value của NetStream.bufferTime
 	
-7.	Sound.length sẽ tăng liên tục từ 0 (bắt đầu load) --> duration của file âm thanh (khi load xong), nói cách khác, sound.length cho biết thời
-	lượng âm thanh đã load chứ o phải duration thực tế của audio.
+7.	Sound.length sẽ tăng liên tục từ 0 (bắt đầu load) --> duration của file âm thanh (khi load xong), nói cách khác, sound.length cho biết thời lượng âm thanh đã load chứ o phải duration thực tế của audio.
 	
-8.  Player always need a Loader to work (dependent) but Loader is not required a Player to work. VisualGraphic will need Loader + an optional Player,
-	VisualVideo will need both loader + player to work
+8.  Player always need a Loader to work (dependent) but Loader is not required a Player to work. VisualGraphic will need Loader + an optional Player, VisualVideo will need both loader + player to work
 	
 9.	We can use interface to describle any Class, if a class implements multiple interfaces like IA, IB, IC, IClass with IClass is the main Interface
 	for Class, we can then add .get asIA(): IA, .get asIB(): IB, .get asIC(): IC so we can still access all class functions ad use IClass as a
@@ -75,4 +70,8 @@ to handle other event (like firstly only handle COMPLETE, then when finalize we 
 	
 15. CacheBuster helps prevent content caching, can be used in testing or make sure content is always updated (prevent cache only for the first time)
 	
+16. BufferView helps optimize the number of items created by using only a essentially sufficient number of items (nBuffer) to buffering the view
+	Once the view changed, items will be moved/update content according to its id. BufferView also optimized the number of changes needed by only update the smallest possible number of items
+	BufferView should based on a Numeric position instead of rely on a group (which forcely make items with different id different position that may caused problems with a grid layout, where items on the same row can share the same position value)
+
 Quick Ones : Uploader / Webcam support / Peer2Peer ?

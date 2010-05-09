@@ -1,4 +1,4 @@
-﻿package sglib.core.infs 
+﻿package sglib.core.infs.transition
 {
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
@@ -13,13 +13,11 @@
 		function get view(): DisplayObject;
 		
 		function setBound(pbound : Object): ITransition; /* need .x, .y, .width, .height - can be null */
-		function setParent(pparent: Sprite): void; /* default parent, can be null */
+		function setParent(pparent: DisplayObject): void; /* default parent, can be null */
 		
-		function addIn(ptarget: DisplayObject, pTime: * = null, pConfig: * = null): ITransition;
-		function addOut(ptarget: DisplayObject, pTime: * = null, pConfig: * = null):ITransition;
+		//function show(pduration: Number = 1, pdelay: Number = 0): void; //better composing effects
+		//function hide(pduration: Number = 1, pdelay: Number = 0): void; //better composing effects
 		
-		function start(): void;
-		function stop(): void;
 	}
 	
 }

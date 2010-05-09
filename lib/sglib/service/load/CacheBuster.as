@@ -11,12 +11,12 @@ package sglib.service.load
 	public class CacheBuster implements ICacheBuster
 	{
 		protected var _mode : String;
-		protected var _dict : Dictionary; /* useful for FIRST mode */
+		protected var _dict : Object; /* useful for FIRST mode */
 		
 		public function CacheBuster(pmode: String) 
 		{
 			_mode = pmode;
-			_dict = new Dictionary();
+			_dict = { };
 		}
 		
 		public function set mode(pvalue:String):void { _mode = pvalue; }
