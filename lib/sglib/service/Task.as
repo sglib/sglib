@@ -28,8 +28,13 @@ package sglib.service
 		
 		public function waitForEvent(pdispatcher:IEventDispatcher, peventName:String):ITask
 		{
-			_list.push(new EventTaskItem(pdispatcher, peventName));
+			_list.push(new EventTaskItem(pdispatcher, [peventName]));
 			return this;
+		}
+		
+		public function waitForOneOfEvents(pdispatcher:IEventDispatcher, peventNames:Array):ITask
+		{
+			_list.push(new EventTaskItem(pdispatcher, peventNames));
 		}
 		
 		public function waitForCallback(pcallback:Callback, pvalidator:Function = null):ITask
@@ -126,7 +131,6 @@ package sglib.service
 			return this;
 		}
 		
-		
 	}
 
 }
@@ -179,8 +183,9 @@ class FunctionTaskItem extends TaskItemInfo {
 
 class EventTaskItem extends TaskItemInfo {
 	public var obj		: IEventDispatcher;
-	public var evtType	: String;
-	public function EventTaskItem(pobj: IEventDispatcher, ptype: String, peffective: int = -1, premove : int = -1) {
+	public var evtTypes	: Array;
+	
+	public function EventTaskItem(pobj: IEventDispatcher, ptype: Array, peffective: int = -1, premove : int = -1) {
 		obj = pobj;
 		evtType = ptype;
 		super(peffective, premove);
@@ -188,12 +193,18 @@ class EventTaskItem extends TaskItemInfo {
 	
 	override protected function _doStart():void 
 	{
-		obj.addEventListener(evtType, _onEvent);
+		var l : int = evtTypes.length;
+		
+		for (var i: int = 0 ; i < l; i++) {
+			obj.addEventListener(evtTypes[i], _onEvent);
+		}
 	}
 	
 	override public function stop():void 
 	{
-		obj.removeEventListener(evtType, _onEvent);
+		for (var i: int = 0 ; i < l; i++) {
+			obj.removeEventListener(evtTypes[i], _onEvent);
+		}
 	}
 	
 	private function _onEvent(e:Event):void 

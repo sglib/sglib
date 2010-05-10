@@ -15,6 +15,7 @@ package sglib.core.infs
 		 */
 		function add(pfunction: Function, pparams: Array = null): ITask;
 		function waitForEvent(pdispatcher: IEventDispatcher, peventName: String):ITask;
+		function waitForOneOfEvents(pdispatcher: IEventDispatcher, peventNames: Array):ITask;
 		function waitForCallback(pcallback: Callback, pvalidator : Function = null): ITask;
 		function delay(ptime: Number):ITask;
 		
