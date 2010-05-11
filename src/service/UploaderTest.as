@@ -21,7 +21,7 @@ package service
 			
 			ud = newUploader();
 			
-			ud.setServer('http://www.google.com/')
+			ud.setServer('http://www.google.com/abc/')
 				.setSizeLimit(1024, 1024 * 1024 * 10)
 				.autoRemove(true, true)
 				.info.addLsn(onInfo);

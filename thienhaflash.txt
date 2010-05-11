@@ -74,4 +74,3 @@ Using .status .info to replace specific event dispatcher that is more centralize
 	Once the view changed, items will be moved/update content according to its id. BufferView also optimized the number of changes needed by only update the smallest possible number of items
 	BufferView should based on a Numeric position instead of rely on a group (which forcely make items with different id different position that may caused problems with a grid layout, where items on the same row can share the same position value)
 
-Quick Ones : Uploader / Webcam support / Peer2Peer ?
