@@ -17,6 +17,7 @@
 		}
 		
 		public function setInfo(pvalue: String, pData : * = null): void {
+			_value = ''; //force dispatch info
 			if (pData) _data[pvalue] = pData;
 			value = pvalue;
 		}

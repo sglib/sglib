@@ -1,4 +1,4 @@
-package  
+package service
 {
 	import flash.events.MouseEvent;
 	import sglib.core.Callback;

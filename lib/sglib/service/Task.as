@@ -35,6 +35,7 @@ package sglib.service
 		public function waitForOneOfEvents(pdispatcher:IEventDispatcher, peventNames:Array):ITask
 		{
 			_list.push(new EventTaskItem(pdispatcher, peventNames));
+			return this;
 		}
 		
 		public function waitForCallback(pcallback:Callback, pvalidator:Function = null):ITask
@@ -187,7 +188,7 @@ class EventTaskItem extends TaskItemInfo {
 	
 	public function EventTaskItem(pobj: IEventDispatcher, ptype: Array, peffective: int = -1, premove : int = -1) {
 		obj = pobj;
-		evtType = ptype;
+		evtTypes = ptype;
 		super(peffective, premove);
 	}
 	
@@ -202,6 +203,7 @@ class EventTaskItem extends TaskItemInfo {
 	
 	override public function stop():void 
 	{
+		var l : int = evtTypes.length;
 		for (var i: int = 0 ; i < l; i++) {
 			obj.removeEventListener(evtTypes[i], _onEvent);
 		}
