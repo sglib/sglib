@@ -3,6 +3,7 @@
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import sglib.core.data.State;
+	import sglib.core.infs.transition.ITransition;
 	
 	/**
 	 * @version 0.1.0
@@ -41,5 +42,13 @@
 		 * status of the VisualObject READY | DISABLE | ERROR
 		 */
 		function get status(): State;
+		
+		
+		/**
+		 * content Transitioner
+		 */
+		function get transition(): ITransition;
+		
+		function setTransition(ptrans: ITransition): IVisualObject;
 	}
 }

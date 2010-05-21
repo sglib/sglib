@@ -15,7 +15,6 @@ package sglib.service.transition
 	{
 		protected var _bound	: Object;
 		protected var _parent	: DisplayObjectContainer;
-		protected var _progress : Numeric;
 		
 		public function TransitionBase() 
 		{

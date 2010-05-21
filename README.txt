@@ -63,5 +63,5 @@ What's next in 2.0.0
 Demos to be build with 2.0.0
 
 1. AS Viewer - ref : Flash MiniBuilder
-2. AS3 UML
+2. AS3 UML - Source tree / diagram syn with code
 3. XML / HTML editor

@@ -6,6 +6,7 @@
 	import sglib.core.constant.VisualStatus;
 	import sglib.core.data.State;
 	import flash.display.Sprite;
+	import sglib.core.infs.transition.ITransition;
 	import sglib.core.infs.visual.IVisualObject;
 	/**
 	 * @version 0.1.0
@@ -17,8 +18,8 @@
 	public class VisualObject implements IVisualObject
 	{
 		protected var _view			: Sprite; /* neccessary to change content's registration point */
+		protected var _transition	: ITransition; /* show / hide content */
 		//protected var _bitmap		: Bitmap; /* swapable with content */
-		//protected var _transition	: ITransition; /* show / hide content */
 		
 		protected var _width 	: int;
 		protected var _height	: int;
@@ -29,12 +30,6 @@
 		protected var _status	: State;
 		
 		private var _content	: DisplayObject;
-		
-		//Additional props 
-		//protected var _tint			: Number; //0xAARRGGBB - AA : Tween amount 0-255
-		//protected var _bright		: Number;
-		//protected var _contrast		: Number;
-		//protected var _saturation	: Number;
 		
 		public function VisualObject(pview: DisplayObject = null) { 
 			_view = pview ? pview as Sprite : new Sprite();
@@ -102,6 +97,21 @@
 		/**
 		 * @inheritDoc
 		 */
+		public function setTransition(ptrans:ITransition):IVisualObject
+		{
+			_transition = ptrans;
+			return this;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		public function get transition():ITransition { return _transition; }
+		
+		
+		/**
+		 * @inheritDoc
+		 */
 		public function get view():Sprite { return _view; }
 		
 		/**
@@ -119,10 +129,10 @@
 		 */
 		public function get status():State{ return _status }
 		
-		public function set view(value:Sprite):void 
-		{
-			_view = value;
-		}
+		/**
+		 * @inheritDoc
+		 */
+		public function set view(value:Sprite):void { _view = value; }
 		
 	}
 
