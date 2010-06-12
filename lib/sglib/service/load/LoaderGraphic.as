@@ -128,6 +128,7 @@
 			if (!_isCached) {
 				_remLsn();
 				_content = _loader.content;
+				if (_smooth && _loader.content is Bitmap) (_loader.content as Bitmap).smoothing = true;
 				if (_cacher) _cacher.setURL(_url, _content); //register
 			}
 			_progress.value = 1;

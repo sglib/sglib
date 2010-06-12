@@ -45,7 +45,7 @@
 		private function _onLoadStatus():void
 		{
 			switch (_loader.loadStatus.value) {
-				case LoadStatus.COMPLETED	: 
+				case LoadStatus.COMPLETED	:
 					_updateContent();
 					_status.value = VisualStatus.READY;
 					break; /*  */

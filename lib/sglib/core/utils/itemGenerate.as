@@ -16,7 +16,7 @@ package sglib.core.utils
 	{
 		var arr : Array = [];
 		for (var i: int = 0; i < pnItems; i++) {
-			arr.push(pfNew(pnItems));
+			arr.push(pfNew(i));
 		}
 		return arr;
 	}

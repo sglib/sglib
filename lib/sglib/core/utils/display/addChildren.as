@@ -18,7 +18,7 @@
 		var p : DisplayObjectContainer = pparent as DisplayObjectContainer;
 		if (!p) return;
 		
-		var l : int = children.length;
+		var l : int = pchildren.length;
 		for (var i:int = 0; i < l; i++) 
 		{
 			if (pchildren[i] != null) p.addChild(pchildren[i]);

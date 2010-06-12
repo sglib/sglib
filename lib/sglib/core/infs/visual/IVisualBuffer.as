@@ -11,8 +11,9 @@ package sglib.core.infs.visual
 	public interface IVisualBuffer extends IVisualObject
 	{
 		function set position(pvalue: Numeric):void;
+		function set total(value:int):void 
 		function setConfig(pitems:Array, ptotal: int, pmodify:Function, pnView: int = -1):void;
-		function get pos(): Number;
+		function getPos(addL: Number = 0): Number;
 	}
 	
 }

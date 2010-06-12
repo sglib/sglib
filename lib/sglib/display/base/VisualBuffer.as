@@ -4,6 +4,7 @@
 	import sglib.core.data.Group;
 	import sglib.core.data.Numeric;
 	import sglib.core.infs.visual.IVisualBuffer;
+	import sglib.core.utils.display.removeChildren;
 	import sglib.core.utils.math.val2Pct;
 	/**
 	 * @version 0.1.0
@@ -46,53 +47,51 @@
 			_nView = (pnView == -1) ? _l - 1 : pnView;
 			
 			_nBuff = Math.max(0, ((_l - _nView) >> 1)-1);
-			
-			if (_position) _onChangedPosition();
+			if (_position) _onChangedPosition(true);
 		}
 		
 		public function set position(pvalue:Numeric):void
 		{
 			_position = pvalue;
 			_position.addLsn(_onChangedPosition);
+			_onChangedPosition(true);
 		}
 		
-		private function _onChangedPosition():void
+		private function _onChangedPosition(pforce: Boolean = false):void
 		{
-			var pos : int = getPosition(getPct());
+			var pos		: int = _position.value * (_total - _nView);
+			var delta	: int = pos - _last;
 			
-			if (Math.abs(getPct() * _total-_last)>= _nBuff) {
+			if (pforce || Math.abs(delta) >= _nBuff) {
+				removeChildren(_view);
 				//TODO : Optimize moving/update only items that changes
-				var itm		: DisplayObject;
 				
-				for (var i: int = 0; i < _l; i++) {
-					itm = _items[i];
-					view.addChild(itm);
-					_modifier(itm, pos - _h + i);
+				var itm		: DisplayObject;
+				var min		: int = Math.min(_l, _total);
+				
+				for (var i: int = 0; i < min; i++) {
+					if ((pos + i >= 0) && (pos + i < _total)) {
+						itm = _items[i];
+						_view.addChild(itm);
+						_modifier(itm, pos + i);//pos - _h + i
+					}
 				}
 				
 				_last = pos;
 			}
 		}
 		
-		private function getPct():Number
+		public function getPos(addL: Number = 0): Number {
+			var p : Number = _position.value * (_total - _nView + addL);
+			return Math.max(p, 0);//Math.max(0, Math.min(p, _total - _nView));
+		}
+		
+		public function set total(value:int):void 
 		{
-			return ((_total - _nView) * _position.value + (_nView >> 1)) / _total;
-			//return _position.value;
+			_total = value;
+			_position.value = 0;
+			_onChangedPosition(true);
 		}
-		
-		public function get pos(): Number {
-			var p : Number = getPct() * _total;
-			p -= (_nView >> 1);
-			return Math.max(0, Math.min(p, _total - _nView));
-		}
-		
-		/* return the correct center position with awareness of minimum / maximum possible values */
-		private function getPosition(pvalue: Number): int {
-			if (pvalue < 0) pvalue = 0;
-			var pos : int = (pvalue >= 1) ? _total - 1 : int(pvalue * _total);
-			return (_total > _l) ? (pos > _total - _h) ? _total - _h : (pos < _h) ? _h: pos : _h;
-		}
-		
 	}
 
 }

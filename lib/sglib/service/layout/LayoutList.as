@@ -19,7 +19,7 @@
 			var l	: int = pitems.length;
 			var o	: DisplayObject;
 			var c	: int = (isHorz) ? ox : oy;
-			
+			trace(gaps);
 			for (var i: int = 0; i < l; i++) {
 				o = pitems[i];
 				

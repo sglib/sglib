@@ -20,7 +20,7 @@
 		if (!pparent) return arr;/* return an empty array instead of return null to prevent errors while accessing .length */
 		
 		var p : DisplayObjectContainer = pparent as DisplayObjectContainer;
-		var n : int = container.numChildren;
+		var n : int = p.numChildren;
 		
 		for (var i: int = 0; i < n; i++) {
 			arr.push( (ptopdown) ? p.getChildAt(n - i - 1) : p.getChildAt(i) );

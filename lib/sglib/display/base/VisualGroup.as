@@ -5,7 +5,7 @@
 	import sglib.core.infs.layout.ILayout;
 	import sglib.core.infs.visual.IVisualGroup;
 	import sglib.core.infs.visual.IVisualGroup;
-	import sglib.core.utils.addChildren;
+	import sglib.core.utils.display.addChildren;
 	/**
 	 * @version 0.1.0
 	 * @author thienhaflash
@@ -18,6 +18,7 @@
 		protected var _group	: Group;
 		protected var _items 	: Array;
 		protected var _layout	: ILayout;
+		protected var _layoutItems	: Array;
 		
 		public function VisualGroup() 
 		{
@@ -28,11 +29,20 @@
 		{
 			_items = pchildren;
 			_group = new Group(_items.length, -1);
+			
+			_layoutItems = [];
+			for (var i: int = 0; i < _group.total; i++) {
+				if (_items[i].parent == null) {//ignore position of timeline put items
+					_layoutItems.push(_items[i]);
+				}
+			}
+			if (_layoutItems.length == _items.length) _layoutItems = _items;
+			
 			addChildren(_view, _items);
 			_width = _layout.width;
 			_height = _layout.height;
 			
-			_layout.refresh(_items);
+			if (_layout) _layout.refresh(_layoutItems);			
 			return this;
 		}
 		
@@ -44,7 +54,6 @@
 		public function get items():Array { return _items }
 		
 		public function get group():Group { return _group }
-		
 		
 	}
 

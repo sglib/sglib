@@ -42,8 +42,7 @@ package display
 		{
 			var pct : Number = stage.mouseX / (stage.stageWidth-1);
 			
-			position.value = pct;
-			
+			position.value = pct;	
 			bv.view.y =  -int(bv.pos * 20);
 		}
 		
